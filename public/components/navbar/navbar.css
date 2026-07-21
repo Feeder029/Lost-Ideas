@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    color: var(--paper);
+    background: var(--ink);
+    line-height: 1.6;
+}
+
+nav {
+    width: 100%;
+    height: var(--navh);
+    background-color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+}
+
+.logo a{
+    font-family: "Special Elite", monospace;
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+ul li a{
+    text-decoration: none;
+    color: var(--pencil);
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+ul li a:hover {
+    color: var(--paper);
+    background-color: var(--ink-line);
+}
+
+ul li a.active {
+    color: var(--thread-gold);
+    background-color: var(--amber-ink);
+}
+
+.account {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.account button {
+    background-color: var(--ink-soft);
+    color: var(--paper);
+    border: 1px solid var(--ink-line);
+    padding: 0.5rem;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+}
+
+main {
+    padding: 1rem 3rem;
+}

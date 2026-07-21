@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+    --ink:#1B2430;
+    --ink-soft:#242F3C;
+    --ink-line: rgba(241,233,210,0.14);
+    --paper:#F1E9D2;
+    --paper-dark:#E4D8B4;
+    --stamp-red:#A23B2E;
+    --filed-teal:#3F6259;
+    --filed-teal-deep:#2C4640;
+    --pencil:#6B6558;
+    --thread-gold:#C9A227;
+    --amber-ink:#A97A1E;
+    --navh:76px;
+}
+
