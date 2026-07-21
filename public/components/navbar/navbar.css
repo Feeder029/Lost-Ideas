@@ -20,7 +20,9 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 3rem;
+    flex-shrink: 0;
 }
+
 
 .logo a{
     font-family: "Special Elite", monospace;
@@ -31,7 +33,6 @@ nav {
 
 ul {
     display: flex;
-    gap: 1rem;
     list-style: none;
 }
 
@@ -40,7 +41,7 @@ ul li a{
     color: var(--pencil);
     font-family: "IBM Plex Mono", monospace;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -63,15 +64,19 @@ ul li a.active {
 }
 
 .account button {
-    background-color: var(--ink-soft);
+    background-color: var(--ink);
     color: var(--paper);
     border: 1px solid var(--ink-line);
     padding: 0.5rem;
     border-radius: 50%;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     cursor: pointer;
     font-family: "IBM Plex Mono", monospace;
     font-weight: 500;
+}
+
+#profile{
+    background-color: var(--paper);
 }
 
 main {
