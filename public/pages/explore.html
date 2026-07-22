@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore</title>
     <link rel="stylesheet" href="/public/styles/global.css" class="">
-    <link rel="stylesheet" href="/public/styles/explore.css" class="">
+    <link rel="stylesheet" href="/public/components/explore/explore.css" class="">
 </head>
 <body>
     <div class="heading">
@@ -13,110 +13,128 @@
         <h1>Browse what's been left behind</h1>
         <p>Filter by drawer, then adopt whatever catches your eye.</p>
     </div>
-    <div class="container">
-        <div class="side-nav">
-            <div class="filter-head">Category</div>
+    <div class="main-containter">
+        <aside class="side-nav">
+            <div class="category-head">Category</div>
             <ul class="category">
-                <li><input type="checkbox" name="All Drawers" id="all-drawers"><label for="all-drawers">All Drawers</label></li>
-                <li><input type="checkbox" name="Technology" id="technology"><label for="technology">💻 Technology</label></li>
-                <li><input type="checkbox" name="AI" id="ai"><label for="ai">🤖 AI</label></li>
-                <li><input type="checkbox" name="Healthcare" id="healthcare"><label for="healthcare">🏥 Healthcare</label></li>
-                <li><input type="checkbox" name="Business" id="business"><label for="business">💼 Business</label></li>
-                <li><input type="checkbox" name="Games" id="games"><label for="games">🎮 Games</label></li>
-                <li><input type="checkbox" name="Education" id="education"><label for="education">📚 Education</label></li>
-                <li><input type="checkbox" name="Entertainment" id="entertainment"><label for="entertainment">🎬 Entertainment</label></li>
-                <li><input type="checkbox" name="Environment" id="environment"><label for="environment">🌱 Environment</label></li>
-                <li><input type="checkbox" name="Transportation" id="transportation"><label for="transportation">🚗 Transportation</label></li>
-                <li><input type="checkbox" name="Food" id="food"><label for="food">🍕 Food</label></li>
-                <li><input type="checkbox" name="Fashion" id="fashion"><label for="fashion">👗 Fashion</label></li>
-                <li><input type="checkbox" name="Random" id="random"><label for="random">🎲 Random</label></li>
+                <li><button>📂 All Drawers</button></li>
+                <li><button>💻 Technology</button></li>
+                <li><button>🤖 AI</button></li>
+                <li><button>🏥 Healthcare</button></li>
+                <li><button>💼 Business</button></li>
+                <li><button>🎮 Games</button></li>
+                <li><button>📚 Education</button></li>
+                <li><button>🎬 Entertainment</button></li>
+                <li><button>🌱 Environment</button></li>
+                <li><button>🚗 Transportation</button></li>
+                <li><button>🍕 Food</button></li>
+                <li><button>👗 Fashion</button></li>
+                <li><button>🎲 Random</button></li>
             </ul>
+        </aside>
 
-            <div class="filter-head">Difficulty</div>
-            <ul class="difficulty">
-                <li><input type="checkbox" name="All Levels" id="all-levels"><label for="all-levels">All Levels</label></li>
-                <li><input type="checkbox" name="Easy" id="easy"><label for="easy">Easy</label></li>
-                <li><input type="checkbox" name="Medium" id="medium"><label for="medium">Medium</label></li>
-                <li><input type="checkbox" name="Hard" id="hard"><label for="hard">Hard</label></li>
-            </ul>
+        <div class="container">
+            <div class="toolbar">
+                <div class="explore-search">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" placeholder="Search the archive…">
+                </div>
+                <details class="filter-dd" name="filterdrop">
+                    <summary>Difficulty <span class="selected-value" id="difficulty-value">All</span></summary>
+                    <div class="dd-panel" id="panel-diff">
+                        <p class="dd-panel-title">Difficulty</p>
+                        <div class="segmented">
+                            <label class="segment-option"><input type="radio" name="diff" id="diff-all" value="All" checked><span>All</span></label>
+                            <label class="segment-option"><input type="radio" name="diff" id="diff-easy" value="Easy"><span>Easy</span></label>
+                            <label class="segment-option"><input type="radio" name="diff" id="diff-medium" value="Medium"><span>Medium</span></label>
+                            <label class="segment-option"><input type="radio" name="diff" id="diff-hard" value="Hard"><span>Hard</span></label>
+                        </div>
+                    </div>
+                </details>
+                
+                <details class="filter-dd" name="filterdrop">
+                    <summary>Sort By <span class="selected-value" id="sort-value">Newest</span></summary>
+                    <div class="dd-panel" id="panel-sort">
+                        <p class="dd-panel-title">Sort By</p>
+                        <label class="sort-option"><input type="radio" name="sortby" id="sort-newest" value="Newest" checked><span class="dot-ind"></span><span class="label-text">Newest</span></label>
+                        <label class="sort-option"><input type="radio" name="sortby" id="sort-trending"value="Trending"><span class="dot-ind"></span><span class="label-text">Trending</span></label>
+                        <label class="sort-option"><input type="radio" name="sortby" id="sort-adopted" value="Adopted" ><span class="dot-ind"></span><span class="label-text">Most Adopted</span></label>
+                        <label class="sort-option"><input type="radio" name="sortby" id="sort-neveradopted" value="Never Adopted" ><span class="dot-ind"></span><span class="label-text">Never Adopted</span></label>
+                        <label class="sort-option"><input type="radio" name="sortby" id="sort-built" value="Built" ><span class="dot-ind"></span><span class="label-text">Built</span></label>
+                        <label class="sort-option"><input type="radio" name="sortby" id="sort-random" value="Random"><span class="dot-ind"></span><span class="label-text">Random</span></label>
+                    </div>
+                </details>
+            </div>
 
-            <div class="filter-head">Sort By</div>
-            <ul class="sort">
-                <li><input type="checkbox" name="Newest" id="newest"><label for="newest">Newest</label></li>
-                <li><input type="checkbox" name="Oldest" id="oldest"><label for="oldest">Oldest</label></li>
-                <li><input type="checkbox" name="Trending" id="trending"><label for="trending">Trending</label></li>
-                <li><input type="checkbox" name="Most Adopted" id="most-adopted"><label for="most-adopted">Most Adopted</label></li>
-                <li><input type="checkbox" name="Least Adopted" id="least-adopted"><label for="least-adopted">Least Adopted</label></li>
-                <li><input type="checkbox" name="Built" id="built"><label for="built">Built</label></li>
-                <li><input type="checkbox" name="Random" id="random"><label for="random">Random</label></li>
-            </ul>
-        </div>
-        <div class="content">
-            <div class="card">
-                <div class="card-top">
-                    <div id="card-hole">&nbsp;</div>
-                    <p id="card-number">#00482</p>
+            <div class="content">
+                <div class="card">
+                    <div class="card-top">
+                        <div id="card-hole">&nbsp;</div>
+                        <p id="card-number">#00482</p>
+                    </div>
+                    <div class="card-info">
+                        <h3 id="card-difficulty">DIFFICULTY • MEDIUM</h3>
+                        <h2 id="card-title">💡 Self-Cleaning Keyboard Technology</h2>
+                        <p id="card-posted">Posted 3 days ago • unclaimed</p>
+                    </div>
+                    <div class="card-divider"></div>
+                    <div class="card-buttons">
+                        <button id="btn-heart">❤️ 32</button>
+                        <button id="btn-adopt">🚀 Adopt</button>
+                    </div>
                 </div>
-                <div class="card-info">
-                    <h3 id="card-difficulty">DIFFICULTY • MEDIUM</h3>
-                    <h2 id="card-title">💡 Self-Cleaning Keyboard Technology</h2>
-                    <p id="card-posted">Posted 3 days ago • unclaimed</p>
+                <div class="card">
+                    <div class="card-top">
+                        <div id="card-hole">&nbsp;</div>
+                        <p id="card-number">#00482</p>
+                    </div>
+                    <div class="card-info">
+                        <h3 id="card-difficulty">DIFFICULTY • MEDIUM</h3>
+                        <h2 id="card-title">💡 Self-Cleaning Keyboard Technology</h2>
+                        <p id="card-posted">Posted 3 days ago • unclaimed</p>
+                    </div>
+                    <div class="card-divider"></div>
+                    <div class="card-buttons">
+                        <button id="btn-heart">❤️ 32</button>
+                        <button id="btn-adopt">🚀 Adopt</button>
+                    </div>
                 </div>
-                <div class="card-divider"></div>
-                <div class="card-buttons">
-                    <button id="btn-heart">❤️ 32</button>
-                    <button id="btn-adopt">🚀 Adopt</button>
+                <div class="card">
+                    <div class="card-top">
+                        <div id="card-hole">&nbsp;</div>
+                        <p id="card-number">#00482</p>
+                    </div>
+                    <div class="card-info">
+                        <h3 id="card-difficulty">DIFFICULTY • MEDIUM</h3>
+                        <h2 id="card-title">💡 Self-Cleaning Keyboard Technology</h2>
+                        <p id="card-posted">Posted 3 days ago • unclaimed</p>
+                    </div>
+                    <div class="card-divider"></div>
+                    <div class="card-buttons">
+                        <button id="btn-heart">❤️ 32</button>
+                        <button id="btn-adopt">🚀 Adopt</button>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-top">
-                    <div id="card-hole">&nbsp;</div>
-                    <p id="card-number">#00482</p>
-                </div>
-                <div class="card-info">
-                    <h3 id="card-difficulty">DIFFICULTY • MEDIUM</h3>
-                    <h2 id="card-title">💡 Self-Cleaning Keyboard Technology</h2>
-                    <p id="card-posted">Posted 3 days ago • unclaimed</p>
-                </div>
-                <div class="card-divider"></div>
-                <div class="card-buttons">
-                    <button id="btn-heart">❤️ 32</button>
-                    <button id="btn-adopt">🚀 Adopt</button>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-top">
-                    <div id="card-hole">&nbsp;</div>
-                    <p id="card-number">#00482</p>
-                </div>
-                <div class="card-info">
-                    <h3 id="card-difficulty">DIFFICULTY • MEDIUM</h3>
-                    <h2 id="card-title">💡 Self-Cleaning Keyboard Technology</h2>
-                    <p id="card-posted">Posted 3 days ago • unclaimed</p>
-                </div>
-                <div class="card-divider"></div>
-                <div class="card-buttons">
-                    <button id="btn-heart">❤️ 32</button>
-                    <button id="btn-adopt">🚀 Adopt</button>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-top">
-                    <div id="card-hole">&nbsp;</div>
-                    <p id="card-number">#00482</p>
-                </div>
-                <div class="card-info">
-                    <h3 id="card-difficulty">DIFFICULTY • MEDIUM</h3>
-                    <h2 id="card-title">💡 Self-Cleaning Keyboard Technology</h2>
-                    <p id="card-posted">Posted 3 days ago • unclaimed</p>
-                </div>
-                <div class="card-divider"></div>
-                <div class="card-buttons">
-                    <button id="btn-heart">❤️ 32</button>
-                    <button id="btn-adopt">🚀 Adopt</button>
+                <div class="card">
+                    <div class="card-top">
+                        <div id="card-hole">&nbsp;</div>
+                        <p id="card-number">#00482</p>
+                    </div>
+                    <div class="card-info">
+                        <h3 id="card-difficulty">DIFFICULTY • MEDIUM</h3>
+                        <h2 id="card-title">💡 Self-Cleaning Keyboard Technology</h2>
+                        <p id="card-posted">Posted 3 days ago • unclaimed</p>
+                    </div>
+                    <div class="card-divider"></div>
+                    <div class="card-buttons">
+                        <button id="btn-heart">❤️ 32</button>
+                        <button id="btn-adopt">🚀 Adopt</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="../components/explore/explore.js"></script>
 </body>
 </html>
