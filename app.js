@@ -44,7 +44,7 @@ async function initApp() {
     // Load nav and footer at the same time
     await Promise.all([
         loadComponent("/public/components/navbar/navbar.html", "nav"),
-       
+        loadComponent("/public/components/footer/footer.html", "footer")
     ]);
 
     // Default page
