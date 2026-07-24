@@ -73,6 +73,13 @@ ul li a.active {
     cursor: pointer;
     font-family: "IBM Plex Mono", monospace;
     font-weight: 500;
+    transform-origin: bottom center;
+    transition:transform .15s ease;
+}
+
+.account button:hover{
+    border: 1px solid var(--thread-gold);
+    transform:translateY(-1px);
 }
 
 #profile{
