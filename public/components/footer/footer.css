@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+body{
+    height: 100%;
+}
+
 footer{
     padding: 1.5rem 3rem;
     background-color: var(--ink-soft);
@@ -31,7 +35,8 @@ footer{
 }
 
 .bot p{
+    font-family: var(--ibm);
     font-size: 0.8rem;
-    color: var(--ink-line);
+    color: var(--pencil);
     font-weight: bold;
 }

@@ -56,6 +56,7 @@ body {
 .main-containter {
     flex: 1;
     display: flex;
+    align-items: flex-start;
     flex-direction: row;
     padding-top: 1rem;
     padding-left: 5rem;
@@ -66,17 +67,20 @@ body {
     flex-direction: column;
 }
 
+
 .side-nav {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    position: sticky;
+    top: 15px;         
+    align-self: flex-start;
     width: 250px;
     height: 100%;
     background: var(--ink-soft);
     padding: 1rem;
     border: 1px solid var(--ink-line);
     border-radius: 10px;
-
 }
 
 .category button{
@@ -150,6 +154,7 @@ body {
 .explore-search{
     min-width:400px; 
     display:flex; 
+    flex: 1;
     align-items:center; 
     gap:10px;
     background:var(--ink-soft); 
@@ -341,6 +346,25 @@ body {
     color:rgba(241,233,210,.35);
 }
 
+#btn-idea{
+    color: var(--paper);
+    background-color: var(--filed-teal);
+    font-family: var(--ibm);
+    padding: 0 1rem;
+    height: 40px;
+    border: 1.5px solid var(--filed-teal-deep);
+    border-radius: 5px;
+    box-shadow:0 5px 0 var(--filed-teal-deep);
+    transform-origin: bottom center;
+    transition:transform .15s ease, box-shadow .15s ease;
+    cursor: pointer;
+}
+
+#btn-idea:hover{
+   transform:translateY(-2px) scaleY(1.1);
+   box-shadow:0 6px 0 var(--filed-teal-deep);
+}
+
 .card {
     background-color: var(--paper);
     height: 280px;
@@ -448,13 +472,13 @@ body {
     color: var(--paper);
     border: 1.5px solid var(--filed-teal-deep);
     border-radius: 5px;
-    box-shadow:0 4px 0 var(--filed-teal-deep);
+    box-shadow:0 5px 0 var(--filed-teal-deep);
     transform-origin: bottom center;
     transition:transform .15s ease, box-shadow .15s ease
     
 }
 
-
 #btn-adopt:hover{
-   transform: scaleY(1.1);
+   transform:translateY(-2px) scaleY(1.1);
+   box-shadow:0 6px 0 var(--filed-teal-deep);
 }
