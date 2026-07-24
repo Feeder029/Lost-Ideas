@@ -65,7 +65,7 @@
                             <label class="sort-option"><input type="radio" name="sortby" id="sort-random" value="Random"><span class="dot-ind"></span><span class="label-text">Random</span></label>
                         </div>
                     </details>
-                    <button id="btn-idea">📂 FILE AN IDEA</button>
+                    <button id="btn-idea-open" class="open">📂 FILE AN IDEA</button>
                 </div>
 
                 <div class="content">
@@ -232,8 +232,61 @@
                 </div>
             </div>
         </div>
+
+        <div id="idea-form-container" class="idea-form-container">
+            <div class="idea-form-card">
+                <button id="btn-idea-close" class="close">&times;</button>
+                <h3>• NEW CASE FILE</h3>
+                <h2>📂File an Idea</h2>
+                <p><em> Every field is required — someone out there is waiting to adopt this.</em></p>
+                
+                <form class="idea-form" onsubmit="return false;">
+                    <label class="form-group">
+                        <span class="form-label">Title</span>
+                        <input type="text" placeholder="e.g. asdas das dasdasd" required>
+                    </label>
+
+                    <label class="form-group">
+                        <span class="form-label">Description</span>
+                        <textarea rows="4" placeholder="What's the idea? " required></textarea>
+                    </label>
+
+                    <div class="form-row">
+                        <label class="form-group">
+                            <span class="form-label">Category</span>
+                            <select class="form-dd">
+                                <option>💻 Technology</option>
+                                <option>🎮 Games</option>
+                                <option>🏥 Healthcare</option>
+                                <option>🌱 Environment</option>
+                                <option>📚 Education</option>
+                                <option>🎨 Art</option>
+                                <option>🚗 Transportation</option>
+                                <option>💡 Random</option>
+                            </select>
+                        </label>
+                
+                        <label class="form-group">
+                            <span class="form-label">Difficulty</span>
+                            <div class="segmented form-segmented">
+                                <label class="segment-option"><input type="radio" name="form-diff" checked><span>Easy</span></label>
+                                <label class="segment-option"><input type="radio" name="form-diff"><span>Medium</span></label>
+                                <label class="segment-option"><input type="radio" name="form-diff"><span>Hard</span></label>
+                            </div>
+                        </label>
+                    </div>
+
+                    <label class="toggle-row">
+                        <span class="form-label" style="margin:0;">Post anonymously?</span>
+                        <span class="toggle-switch"><input type="checkbox"><span class="toggle-track"><span class="toggle-thumb"></span></span></span>
+                    </label>
+
+                    <button type="submit" class="adopt-stamp submit-idea-btn">🚀 Submit Idea</button>
+                </form>
+            </div>
+        </div>
     </section>
 
-    <script src="../components/explore/explore.js"></script>
+
 </body>
 </html>
