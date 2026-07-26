@@ -13,9 +13,9 @@ async function loadComponent(file, targetId) {
                 initNavbar?.();
                 break;
 
-            case "footer":
-                initFooter?.();
-                break;
+            // case "footer":
+            //     initFooter?.();
+            //     break;
         }
 
     } catch (error) {
