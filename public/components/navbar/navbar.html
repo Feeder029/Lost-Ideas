@@ -23,11 +23,63 @@
             <button id="notification">🔔</button>
             <button id="profile">👤</button>
         </div>
+        <!-- <div class="auth">
+            <button id="btn-auth-open">LOGIN</button>
+        </div> -->
     </nav>
 
     <main id="content">
 
     </main>
+
+    <div class="auth-container" id="auth-container">
+        <div class="auth-form-card">
+            <button id="btn-auth-close" class="close">&times;</button>
+            <input type="radio" name="authview" id="view-login" class="auth-view-radio" checked>
+            <input type="radio" name="authview" id="view-signup" class="auth-view-radio">
+
+            <div class="auth-switcher">
+                <label for="view-login">Log In</label>
+                <label for="view-signup">Sign Up</label>
+            </div>
+
+            <div class="auth-panel" id="login-panel">
+                <h2 class="modal-title">Welcome back!</h2>
+                <form class="idea-form" onsubmit="return false;">
+                <label class="form-group">
+                    <span class="form-label">Email</span>
+                    <input type="email" placeholder="you@example.com" required>
+                </label>
+                <label class="form-group">
+                    <span class="form-label">Password</span>
+                    <input type="password" placeholder="••••••••" required>
+                </label>
+                <button type="submit" class="adopt-stamp auth-submit-btn">🔑 Log In</button>
+                </form>
+                <p class="auth-switch-note">New to the archive? <label for="view-signup">Sign up</label></p>
+            </div>
+        
+            <div class="auth-panel" id="signup-panel">
+                <h2 class="modal-title">File your first idea!</h2>
+                <form class="idea-form" onsubmit="return false;">
+                <label class="form-group">
+                    <span class="form-label">Nickname</span>
+                    <input type="text" placeholder="e.g. Hatdog123" required>
+                </label>
+                <label class="form-group">
+                    <span class="form-label">Email</span>
+                    <input type="email" placeholder="you@example.com" required>
+                </label>
+                <label class="form-group">
+                    <span class="form-label">Password</span>
+                    <input type="password" placeholder="••••••••" required>
+                </label>
+                <button type="submit" class="adopt-stamp auth-submit-btn">📂 Create Account</button>
+                </form>
+                <p class="auth-switch-note">Already filed with us? <label for="view-login">Log in</label></p>
+            </div>
+        </div>
+    </div>
     
     <script src="/app.js"></script>
     

@@ -6,6 +6,18 @@ async function loadComponent(file, targetId) {
 
         const html = await response.text();
         document.getElementById(targetId).innerHTML = html;
+
+        // Initialize component
+        switch (targetId) {
+            case "nav":
+                initNavbar?.();
+                break;
+
+            case "footer":
+                initFooter?.();
+                break;
+        }
+
     } catch (error) {
         console.error(error);
     }
