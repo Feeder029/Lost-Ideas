@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lost Ideas{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/global.css') }}">
+
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    {% include "components/navbar.html" %}
+
+    <main>
+        {% if page == "explore" %}
+            {% include "explore.html" %}
+        {% elif page == "profile" %}
+            {% include "profile.html" %}
+        {% endif %}
+    </main>
+
+    {% include "components/footer.html" %}
+
+    <script src="{{ url_for('static', filename='components/navbar/navbar.js') }}"></script>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

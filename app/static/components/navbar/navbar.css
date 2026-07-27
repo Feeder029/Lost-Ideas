@@ -71,7 +71,7 @@ ul li a.active {
     gap: 1rem;
 }
 
-.account button {
+.account a {
     background-color: var(--ink);
     color: var(--paper);
     border: 1px solid var(--ink-line);
@@ -83,9 +83,12 @@ ul li a.active {
     font-weight: 500;
     transform-origin: bottom center;
     transition:transform .15s ease;
+    list-style: none;
+    text-decoration: none;
+    text-align: center;
 }
 
-.account button:hover{
+.account a:hover{
     border: 1px solid var(--thread-gold);
     transform:translateY(-1px);
 }

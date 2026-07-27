@@ -21,3 +21,5 @@ function initNavbar() {
         }
     });
 }
+
+initNavbar();

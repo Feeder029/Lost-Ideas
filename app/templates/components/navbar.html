@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lost Ideas</title>
-    <link rel="stylesheet" href="/public/styles/global.css" class="">
-    <link rel="stylesheet" href="/public/components/navbar/navbar.css" class="">
+    <link rel="stylesheet" href="{{ url_for('static', filename='components/navbar/navbar.css') }}">
 </head>
 <body>
     <nav>
@@ -13,19 +12,19 @@
             <a href="/">💡 Lost Ideas</a>
         </div>
         <ul class="nav-links">
-            <li><a href="#" onclick="loadPage('/public/pages/explore.html')">Explore</a></li>
-            <li><a href="#" onclick="loadPage()">Leaderboards</a></li>
-            <li><a href="#" onclick="loadPage('/public/pages/about.html')">About</a></li>
+            <li><a href="{{ url_for('paging.main', page='explore') }}"">Explore</a></li>
+            <li><a href="#">Leaderboards</a></li>
+            <li><a href="#">About</a></li>
         </ul>
         <div class="account">
             <!-- <button id="login-btn">Sign In</button> -->
-            <button id="settings">⚙️</button>
-            <button id="notification">🔔</button>
-            <button id="profile" onclick="loadPage('/public/pages/profile.html')">👤</button>
+            <a href="" id="settings">⚙️</a>
+            <a href="" id="notification">🔔</a>
+            <a id="profile" href="{{ url_for('paging.main', page='profile') }}">👤</a>
         </div>
-        <!-- <div class="auth">
+        <div class="auth">
             <button id="btn-auth-open">LOGIN</button>
-        </div> -->
+        </div>
     </nav>
 
     <main id="content">
@@ -81,7 +80,6 @@
         </div>
     </div>
     
-    <script src="/app.js"></script>
-    
+    <script src="{{ url_for('static', filename='components/navbar/navbar.js') }}"></script>
 </body>
 </html>
