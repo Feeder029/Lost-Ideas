@@ -73,6 +73,8 @@ function initExplore() {
 
             document.getElementById("card-details-number").textContent = "#" + String(btn.dataset.id).padStart(5, "0");
 
+            document.getElementById("card-profile-name").textContent = btn.dataset.creator;
+
             document.getElementById("card-details-title").textContent = `${btn.dataset.icon} ` + btn.dataset.title;
 
             document.getElementById("card-details-difficulty").textContent = "Difficulty • " + btn.dataset.difficulty;

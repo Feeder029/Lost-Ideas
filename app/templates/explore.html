@@ -81,6 +81,7 @@
                                 <a
                                     class="btn-adopt"
                                     data-id="{{ idea.id }}"
+                                    data-creator="{{ idea.user.username }}"
                                     data-title="{{ idea.title }}"
                                     data-description="{{ idea.description }}"
                                     data-difficulty="{{ idea.difficulty }}"
@@ -157,9 +158,9 @@
         
                 <div class="card-details-card">
                     <div class="card-details-top">
-                        <div class="card-profile-avatar">MR</div>
+                        <div class="card-profile-avatar" id="card-profile-avatar"></div>
                         <div class="card-top-container">
-                            <h2 class="card-profile-name">Mark Reven</h2>
+                            <h2 class="card-profile-name" id="card-profile-name"></h2>
                             <p class="card-posted" id="card-details-posted"></p>
                         </div>
                         <p class="card-number" id="card-details-number"></p>

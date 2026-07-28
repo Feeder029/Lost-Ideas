@@ -3,6 +3,7 @@ from flask import Blueprint, redirect, render_template, jsonify, session, url_fo
 from app.models.idea import Idea
 from app.models.user import User
 from app.extensions import db
+from app.services.stats_service import get_profile_stats
 from app.utils.helpers import get_category_icon
 
 paging_bp = Blueprint("paging", __name__)
@@ -15,20 +16,28 @@ def home():
 def main(page):
     protected_pages = {"profile", "about"}
 
+    user = None
+    stats = None
+
     if page in protected_pages:
         user = db.session.get(User, session.get("user_id"))
 
         if user is None:
             session.pop("user_id", None)
             return redirect(url_for("auth.login"))
-        
+
+        if page == "profile":
+            stats = get_profile_stats(user.id)
+
     ideas_data = Idea.query.order_by(Idea.date_created.desc()).all()
 
     return render_template(
         "main.html",
         page=page,
         ideas_data=ideas_data,
-        get_category_icon=get_category_icon
+        get_category_icon=get_category_icon,
+        user=user,
+        stats=stats
     )
 
 @paging_bp.route("/explore")

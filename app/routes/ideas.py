@@ -20,7 +20,7 @@ def create():
     if user is None:
         session.pop("user_id", None)
         return redirect(url_for("auth.login"))
-
+    
     title = request.form.get("form-title", "").strip()
     description = request.form.get("form-description", "").strip()
     category = request.form.get("form-category")

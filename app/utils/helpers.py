@@ -48,3 +48,11 @@ CATEGORY_ICONS = {
 
 def get_category_icon(category):
     return CATEGORY_ICONS.get(category, "💡")
+
+def get_initials(username):
+    parts = username.split()
+
+    if len(parts) > 1:
+        return (parts[0][0] + parts[1][0]).upper()
+
+    return parts[0][0].upper()

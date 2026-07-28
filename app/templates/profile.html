@@ -10,27 +10,27 @@
 <body>
     <section class="profile-container">
         <div class="profile-card">
-            <h2 class="profile-avatar">MR</h2>
-            <h2 class="profile-name">Mark Reven</h2>
-            <p class="profile-bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum iure similique eum reiciendis rerum officiis ducimus labore ab! Debitis facilis tempora repudiandae. Asperiores, laborum accusantium amet consequatur iste expedita consequuntur?</p>
+            <h2 class="profile-avatar">{{ get_initials(current_user.username) }}</h2>
+            <h2 class="profile-name">{{ current_user.username }}</h2>
+            <p class="profile-bio"></p>
         </div>
         <div class="profile-stats">
             <div class="profile-stats-row">
-                <h2 class="profile-stats-num" id="ideas-shared">123</h2>
+                <h2 class="profile-stats-num" id="ideas-shared">{{ stats.ideas_shared }}</h2>
                 <p class="stats-title">Ideas Shared</p>
             </div>
             <div class="profile-stats-row">
-                <h2 class="profile-stats-num" id="ideas-adopted">69</h2>
+                <h2 class="profile-stats-num" id="ideas-adopted">{{ stats.ideas_adopted }}</h2>
                 <p class="stats-title">Ideas Adopted</p>
             </div>
             <div class="profile-stats-row">
-                <h2 class="profile-stats-num" id="ideas-Built">99</h2>
+                <h2 class="profile-stats-num" id="ideas-Built">{{ stats.ideas_built }}</h2>
                 <p class="stats-title">Ideas Built</p>
             </div>
-            <div class="profile-stats-row">
+            <!-- <div class="profile-stats-row">
                 <h2 class="profile-stats-num" id="followers">1.2M</h2>
                 <p class="stats-title">Followers</p>
-            </div>
+            </div> -->
         </div>
         <div class="profile-achievements">
             <h2>Achievements</h2>

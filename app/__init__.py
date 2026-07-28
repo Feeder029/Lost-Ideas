@@ -6,8 +6,9 @@ from app.extensions import db
 from app.models.user import User
 from app.routes.ideas import idea_bp
 from app.routes.paging import paging_bp
+from app.routes.stats import stats_bp
 from app.routes.auth import auth_bp
-from app.utils.helpers import time_ago
+from app.utils.helpers import get_initials, time_ago
 
 load_dotenv()
 
@@ -32,8 +33,10 @@ def create_app():
     app.register_blueprint(idea_bp)
     app.register_blueprint(paging_bp)
     app.register_blueprint(auth_bp)
+    app.register_blueprint(stats_bp)
 
     app.jinja_env.filters["time_ago"] = time_ago
+    app.jinja_env.globals["get_initials"] = get_initials
     
     with app.app_context():
         db.create_all()
