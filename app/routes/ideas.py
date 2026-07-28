@@ -1,5 +1,7 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, redirect, render_template, request, jsonify, url_for
+from app.models.idea import Idea
 from app.services.idea_service import create_idea
+from app.utils.helpers import time_ago
 
 idea_bp = Blueprint("ideas", __name__)
 
@@ -19,12 +21,7 @@ def ideas():
                 "message": "Failed to create idea"
             }), 500
 
-        return jsonify({
-            "message": "Idea Created",
-            "id": idea.id,
-            "title": idea.title,
-            "desc": idea.description,
-            "category": idea.category,
-            "diff": idea.difficulty,
-            "date_created": idea.date_created
-        })
+        return redirect(url_for("paging.main", page="explore"))
+    else:
+        ideas_data = Idea.query.order_by(Idea.date_created).all()
+        return render_template("main.html", ideas_data=ideas_data)

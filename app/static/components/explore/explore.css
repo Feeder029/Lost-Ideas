@@ -371,14 +371,13 @@ body.no-scroll{
 
 .card {
     background-color: var(--paper);
-    height: 280px;
+    height: 320px;
     width: 300px;
     padding: 1.5rem;
     border-radius: 0 25px 0 0;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    
     transition: transform 0.5s ease, box-shadow 0.4s ease;
 }
 
@@ -417,6 +416,7 @@ body.no-scroll{
 .card-info {
     display: flex;
     flex-direction: column;
+    margin-bottom: auto;
 }
 
 .card-difficulty {
@@ -440,25 +440,35 @@ body.no-scroll{
     padding: 1rem 0;
     line-height: 1.5;
     min-height: 3em;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;     
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-posted {
     color: var(--pencil);
     font-size: 0.7rem;
     letter-spacing: 2px;
+    padding-top: auto;
 }
 
 .card-divider {
+    margin-top: auto;
     border: 1.8px dashed var(--paper-dark);
 }
 
 .card-buttons {
+    margin-top: auto;
     display: flex;
     justify-content: space-between;
 }
 
-.card-buttons button {
+.card-buttons a {
     font-size: 0.8rem;
+    list-style: none;
+    text-decoration: none;
     font-weight: bold;
     padding: 0.7rem;
     font-family: "IBM Plex Mono", monospace;
@@ -468,10 +478,11 @@ body.no-scroll{
 
 #btn-heart {
     background-color: var(--paper);
+    color: var(--ink);
     border: 0;
 }
 
-#btn-adopt {
+.btn-adopt {
     background-color: var(--filed-teal);
     color: var(--paper);
     border: 1.5px solid var(--filed-teal-deep);
@@ -720,12 +731,19 @@ body.no-scroll{
 .card-details-card {
     width: 550px;
     max-width: calc(100vw - 2rem);
-    height: fit-content;
-    overflow-y: auto;
+    max-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 2rem;
+    background: var(--paper);
+    border-top-right-radius: 25px;
 }
 
 .card-details-top {
     display: flex;
+    flex-shrink: 0;
     flex-direction: row;
     justify-content: space-between;
     align-items:center;
@@ -757,8 +775,11 @@ body.no-scroll{
     margin: 0;
 }
 
-.card-details-content{
-    text-align: left;
+.card-details-content {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 8px; 
 }
 
 .card-profile-name{
@@ -774,8 +795,25 @@ body.no-scroll{
     right: 0;
 }
 
-#card-details-title{
+#card-details-title {
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+
+    overflow: visible;
+    text-overflow: unset;
+
+    min-height: auto;
+    height: auto;
+
     font-size: 2rem;
+    line-height: 1.25;
+    letter-spacing: 1px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+
+    margin: 1rem 0;
 }
 
 .card-details-headline{
@@ -785,9 +823,12 @@ body.no-scroll{
     padding-bottom: 10px;
 }
 
-.card-description {
+.card-details-description {
     font-family: var(--source);
-    font-size: 0.8rem;
-    padding: 10px 0;
-    text-align: justify;
+    font-size: 0.9rem;
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }

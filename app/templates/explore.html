@@ -64,22 +64,32 @@
                 </div>
 
                 <div class="content">
-                    <div class="card">
-                        <div class="card-top">
-                            <div id="card-hole">&nbsp;</div>
-                            <p id="card-number" class="card-number" >#00482</p>
+                    {% for idea in ideas_data %}
+                        <div class="card">
+                            <div class="card-top">
+                                <div id="card-hole">&nbsp;</div>
+                                <p id="card-number" class="card-number" >#{{ "%05d"|format(idea.id) }}</p>
+                            </div>
+                            <div class="card-info">
+                                <h3 id="card-difficulty" class="card-difficulty">DIFFICULTY • {{ idea.difficulty }}</h3>
+                                <h2 id="card-title" class="card-title">💡 {{ idea.title }}</h2>
+                                <p id="card-posted" class="card-posted">Posted {{ idea.date_created | time_ago }}</p>
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-buttons">
+                                <a id="btn-heart">❤️ 32</a>
+                                <a
+                                    class="btn-adopt"
+                                    data-id="{{ idea.id }}"
+                                    data-title="{{ idea.title }}"
+                                    data-description="{{ idea.description }}"
+                                    data-difficulty="{{ idea.difficulty }}"
+                                    data-posted="{{ idea.date_created | time_ago }}">
+                                    🚀 Adopt
+                                </a>
+                            </div>
                         </div>
-                        <div class="card-info">
-                            <h3 id="card-difficulty" class="card-difficulty">DIFFICULTY • MEDIUM</h3>
-                            <h2 id="card-title" class="card-title">💡 Lorem Ipsum Dolores</h2>
-                            <p id="card-posted" class="card-posted">Posted 3 days ago • unclaimed</p>
-                        </div>
-                        <div class="card-divider"></div>
-                        <div class="card-buttons">
-                            <button id="btn-heart">❤️ 32</button>
-                            <button id="btn-adopt" class="open">🚀 Adopt</button>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -122,9 +132,9 @@
                         <label class="form-group">
                             <span class="form-label">Difficulty</span>
                             <div class="segmented form-segmented">
-                                <label class="segment-option"><input type="radio" name="form-difficulty" value="Easy" checked><span>Easy</span></label>
-                                <label class="segment-option"><input type="radio" name="form-difficulty" value="Medium"><span>Medium</span></label>
-                                <label class="segment-option"><input type="radio" name="form-difficulty" value="Hard"><span>Hard</span></label>
+                                <label class="segment-option"><input type="radio" name="form-difficulty" value="EASY" checked><span>Easy</span></label>
+                                <label class="segment-option"><input type="radio" name="form-difficulty" value="MEDIUM"><span>Medium</span></label>
+                                <label class="segment-option"><input type="radio" name="form-difficulty" value="HARD"><span>Hard</span></label>
                             </div>
                         </label>
                     </div>
@@ -140,25 +150,27 @@
         </div>
 
         <div class="card-details-container" id="card-details-container">
-            <div class="card-details-card">
-                <div class="card-details-top">
-                    <div class="card-profile-avatar">MR</div>
-                    <div class="card-top-container">
-                        <h2 class="card-profile-name">Mark Reven</h2>
-                        <p class="card-posted" id="card-details-posted">3 Days Ago.</p>
+        
+                <div class="card-details-card">
+                    <div class="card-details-top">
+                        <div class="card-profile-avatar">MR</div>
+                        <div class="card-top-container">
+                            <h2 class="card-profile-name">Mark Reven</h2>
+                            <p class="card-posted" id="card-details-posted"></p>
+                        </div>
+                        <p class="card-number" id="card-details-number"></p>
+                        <button id="btn-card-details-close" class="close">&times;</button>
                     </div>
-                    <p class="card-number" id="card-details-number">#00482</p>
-                    <button id="btn-card-details-close" class="close">&times;</button>
+                    <div class="card-details-content">
+                        <h2 class="card-difficulty" id="card-details-difficulty"></h2>
+                        <h1 class="card-title" id="card-details-title"><span id="card-details-category">💡</span></h1>
+                        <h2 class="card-details-headline">Description</h2>
+                        <div class="card-divider"></div>
+                        <p class="card-details-description" id="card-details-description"></p>
+                    </div>
+                    <button type="submit" class="adopt-stamp submit-idea-btn">🚀 Adopt this Idea</button>
                 </div>
-                <div class="card-details-content">
-                    <h2 class="card-difficulty" id="card-details-difficulty">Difficulty • Medium</h2>
-                    <h1 class="card-title" id="card-details-title"><span id="card-details-category">💡</span>Lorem Ipsum Dolores</h1>
-                    <h2 class="card-details-headline">Description</h2>
-                    <div class="card-divider"></div>
-                    <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia tempore delectus, veritatis sit ad hic, commodi nulla at ratione possimus porro ducimus tempora pariatur. Sunt, laborum voluptatem! Ab, enim praesentium?</p>
-                </div>
-                <button type="submit" class="adopt-stamp submit-idea-btn">🚀 Adopt this Idea</button>
-            </div>
+           
         </div>
 
     </section>

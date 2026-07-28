@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, jsonify
 
+from app.models.idea import Idea
+
 paging_bp = Blueprint("paging", __name__)
 
 @paging_bp.route("/")
@@ -8,7 +10,14 @@ def home():
 
 @paging_bp.route("/main/<page>")
 def main(page):
-    return render_template("main.html", page=page)
+    ideas_data = Idea.query.order_by(Idea.date_created).all()
+
+    return render_template(
+        "main.html",
+        page=page,
+        ideas_data=ideas_data
+    )
+
 
 @paging_bp.route("/explore")
 def explore():
