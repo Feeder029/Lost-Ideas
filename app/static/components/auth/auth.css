@@ -180,6 +180,7 @@ form{
     cursor: pointer;
     text-transform: uppercase;
     margin-top: 1rem;
+}
 
 .auth-submit-btn:hover{
     transform:translateY(-2px) scaleY(1.1);
