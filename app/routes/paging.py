@@ -10,7 +10,7 @@ def home():
 
 @paging_bp.route("/main/<page>")
 def main(page):
-    ideas_data = Idea.query.order_by(Idea.date_created).all()
+    ideas_data = Idea.query.order_by(Idea.date_created.desc()).all()
 
     return render_template(
         "main.html",
