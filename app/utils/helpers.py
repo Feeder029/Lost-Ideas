@@ -31,3 +31,20 @@ def time_ago(date):
 
     years = months // 12
     return f"{years} year{'s' if years != 1 else ''} ago"
+
+CATEGORY_ICONS = {
+    "Technology": "💻",
+    "Healthcare": "🏥",
+    "Business": "💼",
+    "Games": "🎮",
+    "Education": "📚",
+    "Entertainment": "🎬",
+    "Environment": "🌱",
+    "Transportation": "🚗",
+    "Food": "🍕",
+    "Fashion": "👗",
+    "Random": "🎲",
+}
+
+def get_category_icon(category):
+    return CATEGORY_ICONS.get(category, "💡")

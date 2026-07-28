@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, jsonify
 
 from app.models.idea import Idea
+from app.utils.helpers import get_category_icon
 
 paging_bp = Blueprint("paging", __name__)
 
@@ -15,7 +16,8 @@ def main(page):
     return render_template(
         "main.html",
         page=page,
-        ideas_data=ideas_data
+        ideas_data=ideas_data,
+        get_category_icon=get_category_icon
     )
 
 
