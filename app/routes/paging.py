@@ -20,7 +20,6 @@ def main(page):
         get_category_icon=get_category_icon
     )
 
-
 @paging_bp.route("/explore")
 def explore():
     return render_template("explore.html")
@@ -36,3 +35,7 @@ def nav():
 @paging_bp.route("/footer")
 def footer():
     return render_template("footer.html")
+
+@paging_bp.route("/auth")
+def auth():
+    return render_template("auth.html")
