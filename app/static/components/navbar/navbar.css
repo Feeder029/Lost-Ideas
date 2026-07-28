@@ -100,3 +100,31 @@ ul li a.active {
 main {
     padding: 1rem 3rem;
 }
+
+#btn-auth-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: var(--ibm);
+  letter-spacing: 3px;
+  color: var(--ink);
+  background-color: var(--paper);
+  text-decoration: none;
+  border: 1px solid var(--ink-line);
+  border-radius: 999px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+#btn-auth-open:hover {
+  color: var(--paper);
+  border-color: var(--filed-teal);
+  background-color: var(--filed-teal);
+}
+
+#btn-auth-open:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}

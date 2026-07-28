@@ -9,4 +9,6 @@ class Idea(db.Model):
     category = db.Column(db.Text)
     difficulty = db.Column(db.Text)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+    user = db.relationship("User", back_populates="ideas")

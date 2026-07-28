@@ -23,8 +23,12 @@ function initExplore() {
     });
 
     ideaOpenBtn.addEventListener("click", () => {
-        ideaForm.classList.add("show");
-        document.body.classList.add("no-scroll");
+        if (ideaOpenBtn.dataset.authenticated === "true") {
+            ideaForm.classList.add("show");
+            document.body.classList.add("no-scroll");
+        } else {
+            window.location.href = "/auth"
+        }
     });
 
     ideaCloseBtn.addEventListener("click", () => {

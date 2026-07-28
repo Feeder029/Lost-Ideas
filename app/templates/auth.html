@@ -20,14 +20,14 @@
 
             <div class="auth-panel" id="login-panel">
                 <h2 class="modal-title">Welcome back!</h2>
-                <form class="idea-form" onsubmit="return false;">
+                <form class="idea-form" action="/login" method="POST">
                     <label class="form-group">
                         <span class="form-label">Email</span>
-                        <input type="email" placeholder="you@example.com" required>
+                        <input type="email" name="form-login-email" placeholder="you@example.com" required>
                     </label>
                     <label class="form-group">
                         <span class="form-label">Password</span>
-                        <input type="password" placeholder="••••••••" required>
+                        <input type="password" name="form-login-password" placeholder="••••••••" required>
                     </label>
                     <button type="submit" class="adopt-stamp auth-submit-btn">🔑 Log In</button>
                 </form>
@@ -36,18 +36,18 @@
         
             <div class="auth-panel" id="signup-panel">
                 <h2 class="modal-title">File your first idea!</h2>
-                <form class="idea-form" onsubmit="return false;">
+                <form class="idea-form" action="/signup" method="POST">
                     <label class="form-group">
                         <span class="form-label">Nickname</span>
-                        <input type="text" placeholder="e.g. Hatdog123" required>
+                        <input type="text" name="form-signup-username" placeholder="e.g. Hatdog123" required>
                     </label>
                     <label class="form-group">
                         <span class="form-label">Email</span>
-                        <input type="email" placeholder="you@example.com" required>
+                        <input type="email" name="form-signup-email" placeholder="you@example.com" required>
                     </label>
                     <label class="form-group">
                         <span class="form-label">Password</span>
-                        <input type="password" placeholder="••••••••" required>
+                        <input type="password" name="form-signup-password" placeholder="••••••••" required>
                     </label>
                     <button type="submit" class="adopt-stamp auth-submit-btn">📂 Create Account</button>
                 </form>

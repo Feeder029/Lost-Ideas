@@ -60,7 +60,7 @@
                             <label class="sort-option"><input type="radio" name="sortby" id="sort-random" value="Random"><span class="dot-ind"></span><span class="label-text">Random</span></label>
                         </div>
                     </details>
-                    <button id="btn-idea-open" class="open">📂 FILE AN IDEA</button>
+                    <button type="button" id="btn-idea-open" data-authenticated="{{ 'true' if current_user else 'false' }}"> 📂 FILE AN IDEA </button>
                 </div>
 
                 <div class="content">

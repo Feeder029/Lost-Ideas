@@ -4,13 +4,14 @@ from app.models.idea import Idea
 from app.models.user import User
 from app.extensions import db
 
-def create_idea(title, description, difficulty, category):
+def create_idea(title, description, difficulty, category, user_id):
 
     idea = Idea(
         title=title,
         description=description,
         category=category,
-        difficulty=difficulty
+        difficulty=difficulty,
+        user_id=user_id
     )
 
     try:

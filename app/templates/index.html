@@ -15,7 +15,7 @@
         <h1>L<span>o</span>st Ideas</h1>
         <p id="sentence">"Every idea starts somewhere. But some just get left behind." </p>
         <div class="btn">
-            <a href="/" id="share-btn">✒️ Share Idea</a>
+            <a href="{{ url_for('auth.login') }}" id="share-btn">✒️ Share Idea</a>
             <a href="{{ url_for('paging.main', page='explore') }}" id="explore-btn">📂 Explore</a>
         </div>
         <div class="divider">&nbsp;</div>

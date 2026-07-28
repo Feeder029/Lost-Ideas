@@ -16,15 +16,19 @@
             <li><a href="#">Leaderboards</a></li>
             <li><a href="#">About</a></li>
         </ul>
-        <div class="account">
-            <!-- <button id="login-btn">Sign In</button> -->
-            <a href="" id="settings">⚙️</a>
-            <a href="" id="notification">🔔</a>
-            <a id="profile" href="{{ url_for('paging.main', page='profile') }}">👤</a>
-        </div>
-        <div class="auth">
-            <a href="/auth" id="btn-auth-open">Login</a>
-        </div>
+
+        {% if current_user %}
+            <div class="account">
+                <!-- <button id="login-btn">Sign In</button> -->
+                <a href="" id="settings">⚙️</a>
+                <a href="" id="notification">🔔</a>
+                <a id="profile" href="{{ url_for('paging.main', page='profile') }}">👤</a>
+            </div>
+        {% else %}
+            <div class="auth">
+                <a href="/auth" id="btn-auth-open" >Login</a>
+            </div>
+        {% endif %}
     </nav>
 
     <main id="content">
