@@ -177,17 +177,20 @@ function filter(){
 
         });
 
-        // Date
-        // const sortedCards = [...cards].sort((a, b) => {
-        //     const dateA = Number(a.dataset.date);
-        //     const dateB = Number(b.dataset.date);
+        if (selectedSort === "Newest") {
+            cards.sort((a, b) => {
+                return Number(b.dataset.date) - Number(a.dataset.date);
+            });
+        } else if (selectedSort === "Oldest") {
+            cards.sort((a, b) => {
+                return Number(a.dataset.date) - Number(b.dataset.date);
+            });
+        }
 
-        //     return dateB - dateA;
-        // });
-
-        // sortedCards.forEach(card => {
-        //     cardsContainer.appendChild(card);
-        // });
+        cards.forEach(card => {
+            cardsContainer.appendChild(card);
+        });
+        
     }
 
     filterCards();

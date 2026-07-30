@@ -53,6 +53,7 @@
                         <div class="dd-panel" id="panel-sort">
                             <p class="dd-panel-title">Sort By</p>
                             <label class="sort-option"><input type="radio" name="sortby" id="sort-newest" value="Newest" checked><span class="dot-ind"></span><span class="label-text">Newest</span></label>
+                            <label class="sort-option"><input type="radio" name="sortby" id="sort-oldest" value="Oldest"><span class="dot-ind"></span><span class="label-text">Oldest</span></label>
                             <label class="sort-option"><input type="radio" name="sortby" id="sort-trending"value="Trending"><span class="dot-ind"></span><span class="label-text">Trending</span></label>
                             <label class="sort-option"><input type="radio" name="sortby" id="sort-mostadopted" value="Most Adopted" ><span class="dot-ind"></span><span class="label-text">Most Adopted</span></label>
                             <label class="sort-option"><input type="radio" name="sortby" id="sort-neveradopted" value="Never Adopted" ><span class="dot-ind"></span><span class="label-text">Never Adopted</span></label>
@@ -72,9 +73,9 @@
                             data-difficulty="{{ idea.difficulty }}"
                             data-icon="{{ get_category_icon(idea.category) }}"
                             data-category="{{ idea.category }}"
-                            data-posted="{{ idea.date_created | time_ago }}"
+                            data-date="{{ idea.date_created.timestamp() }}"
                             data-creator="{{ 'Anonymous' if idea.anonymous else idea.user.username }}" >
->
+
                             <div class="card-top">
                                 <div id="card-hole">&nbsp;</div>
                                 <p id="card-number" class="card-number" >#{{ "%05d"|format(idea.id) }}</p>

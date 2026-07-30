@@ -420,7 +420,7 @@ body.no-scroll{
 .card-info {
     display: flex;
     flex-direction: column;
-    margin-bottom: auto;
+    flex: 1;
 }
 
 .card-difficulty {
@@ -449,13 +449,14 @@ body.no-scroll{
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    
 }
 
 .card-posted {
     color: var(--pencil);
     font-size: 0.7rem;
     letter-spacing: 2px;
-    padding-top: auto;
+    margin-top: auto;
 }
 
 .card-divider {
