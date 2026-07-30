@@ -81,12 +81,12 @@
                                 <a
                                     class="btn-adopt"
                                     data-id="{{ idea.id }}"
-                                    data-creator="{{ idea.user.username }}"
                                     data-title="{{ idea.title }}"
                                     data-description="{{ idea.description }}"
                                     data-difficulty="{{ idea.difficulty }}"
                                     data-icon="{{ get_category_icon(idea.category) }}"
-                                    data-posted="{{ idea.date_created | time_ago }}">
+                                    data-posted="{{ idea.date_created | time_ago }}"
+                                    data-creator="{{ 'Anonymous' if idea.anonymous else idea.user.username }}" >
                                     🚀 Adopt
                                 </a>
                             </div>
@@ -146,7 +146,7 @@
 
                     <label class="toggle-row">
                         <span class="form-label" style="margin:0;">Post anonymously?</span>
-                        <span class="toggle-switch"><input type="checkbox"><span class="toggle-track"><span class="toggle-thumb"></span></span></span>
+                        <span class="toggle-switch"><input type="checkbox" id="form-anonymous" name="form-anonymous"><span class="toggle-track"><span class="toggle-thumb"></span></span></span>
                     </label>
 
                     <button type="submit" class="adopt-stamp submit-idea-btn">🚀 Submit Idea</button>

@@ -23,10 +23,11 @@ def create():
     
     title = request.form.get("form-title", "").strip()
     description = request.form.get("form-description", "").strip()
-    category = request.form.get("form-category")
     difficulty = request.form.get("form-difficulty")
+    category = request.form.get("form-category")
+    anonymous = "form-anonymous" in request.form
 
-    idea = create_idea(title, description, difficulty, category, user_id=user.id)
+    idea = create_idea(title, description, difficulty, category, anonymous, user_id=user.id)
 
     if idea is None:
         return jsonify({"message": "Failed to create idea"}), 500
