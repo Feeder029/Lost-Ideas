@@ -47,7 +47,7 @@
                     </label>
                     <label class="form-group">
                         <span class="form-label">Password</span>
-                        <input type="password" name="form-signup-password" placeholder="••••••••" required>
+                        <input type="password" name="form-signup-password" placeholder="••••••••" minlength="8" required>
                     </label>
                     <button type="submit" class="adopt-stamp auth-submit-btn">📂 Create Account</button>
                 </form>
@@ -55,5 +55,7 @@
             </div>
         </div>
     </div>
+    
+    <script src="{{ url_for('static', filename='js/global.js') }}"></script>
 </body>
 </html>

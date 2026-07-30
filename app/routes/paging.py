@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, jsonify, session, url_for
+from flask import Blueprint, make_response, redirect, render_template, jsonify, session, url_for
 
 from app.models.idea import Idea
 from app.models.user import User
@@ -31,14 +31,25 @@ def main(page):
 
     ideas_data = Idea.query.order_by(Idea.date_created.desc()).all()
 
-    return render_template(
-        "main.html",
-        page=page,
-        ideas_data=ideas_data,
-        get_category_icon=get_category_icon,
-        user=user,
-        stats=stats
+    response = make_response(
+        render_template(
+            "main.html",
+            page=page,
+            ideas_data=ideas_data,
+            get_category_icon=get_category_icon,
+            user=user,
+            stats=stats
+        )
     )
+
+    if page in protected_pages:
+        response.headers["Cache-Control"] = (
+            "no-store, no-cache, must-revalidate, max-age=0"
+        )
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+
+    return response
 
 @paging_bp.route("/explore")
 def explore():

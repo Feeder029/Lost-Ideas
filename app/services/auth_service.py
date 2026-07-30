@@ -18,7 +18,10 @@ def create_account(username, email, password):
     
     if User.query.filter_by(email=email).first():
         return None
-
+    
+    if len(password) < 8:
+        return None
+         
     hashed =  generate_password_hash(password)
 
     account = User(
@@ -32,6 +35,6 @@ def create_account(username, email, password):
         db.session.commit()
         return account
     except Exception as e:
-            db.session.rollback()
-            print("ERROR:", e)
-            raise e
+        db.session.rollback()
+        print("ERROR:", e)
+        raise e
