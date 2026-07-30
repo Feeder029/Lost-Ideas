@@ -75,6 +75,17 @@ function initExplore() {
 
             document.getElementById("card-profile-name").textContent = btn.dataset.creator;
 
+            const creator = btn.dataset.creator.trim();
+
+            const initials = creator
+                .split(/\s+/)
+                .map(word => word[0])
+                .join("")
+                .slice(0, 2)
+                .toUpperCase();
+
+            document.getElementById("card-profile-avatar").textContent = initials;
+            
             document.getElementById("card-details-title").textContent = `${btn.dataset.icon} ` + btn.dataset.title;
 
             document.getElementById("card-details-difficulty").textContent = "Difficulty • " + btn.dataset.difficulty;
