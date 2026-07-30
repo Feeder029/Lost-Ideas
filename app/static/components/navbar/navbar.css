@@ -101,6 +101,29 @@ main {
     padding: 1rem 3rem;
 }
 
+#btn-auth-logout{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: var(--ibm);
+    letter-spacing: 3px;
+    color: var(--paper);
+    background-color: var(--stamp-red);
+    text-decoration: none;
+    border: 1px solid var(--ink-line);
+    border-radius: 999px;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+#btn-auth-logout:hover {
+  color: var(--paper-dark);
+  border-color: var(--ink-line);
+  background-color: var(--ink-line);
+}
+
 #btn-auth-open {
   display: inline-flex;
   align-items: center;

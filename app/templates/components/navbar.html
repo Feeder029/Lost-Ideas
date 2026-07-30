@@ -19,9 +19,9 @@
 
         {% if current_user %}
             <div class="account">
-                <!-- <button id="login-btn">Sign In</button> -->
-                <a href="" id="settings">⚙️</a>
-                <a href="" id="notification">🔔</a>
+                <!-- <a href="" id="settings">⚙️</a>
+                <a href="" id="notification">🔔</a> -->
+                <a href="/logout" id="btn-auth-logout">LOGOUT</a>     <!-- temporary -->
                 <a id="profile" href="{{ url_for('paging.main', page='profile') }}">👤</a>
             </div>
         {% else %}
