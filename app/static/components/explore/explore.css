@@ -104,7 +104,7 @@ body.no-scroll{
     border: 1px solid var(--pencil);
 }
 
-.category button:active {
+.category button.active, .category button:active {
     color: var(--ink);
     border: 1px solid var(--ink-line);
     background-color: var(--paper);
@@ -379,6 +379,10 @@ body.no-scroll{
     flex-direction: column;
     gap: 1rem;
     transition: transform 0.5s ease, box-shadow 0.4s ease;
+}
+
+.card.hidden {
+    display: none;
 }
 
 .card:nth-child(odd) {

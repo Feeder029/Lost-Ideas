@@ -13,18 +13,18 @@
             <aside class="side-nav">
                 <div class="category-head">Category</div>
                 <ul class="category">
-                    <li><button>📂 All Drawers</button></li>
-                    <li><button>💻 Technology</button></li>
-                    <li><button>🏥 Healthcare</button></li>
-                    <li><button>💼 Business</button></li>
-                    <li><button>🎮 Games</button></li>
-                    <li><button>📚 Education</button></li>
-                    <li><button>🎬 Entertainment</button></li>
-                    <li><button>🌱 Environment</button></li>
-                    <li><button>🚗 Transportation</button></li>
-                    <li><button>🍕 Food</button></li>
-                    <li><button>👗 Fashion</button></li>
-                    <li><button>🎲 Random</button></li>
+                    <li><button type="button" class="category-btn active" data-category="All">📂 All Drawers</button></li>
+                    <li><button type="button" class="category-btn" data-category="Technology">💻 Technology</button></li>
+                    <li><button type="button" class="category-btn" data-category="Healthcare">🏥 Healthcare</button></li>
+                    <li><button type="button" class="category-btn" data-category="Business">💼 Business</button></li>
+                    <li><button type="button" class="category-btn" data-category="Games">🎮 Games</button></li>
+                    <li><button type="button" class="category-btn" data-category="Education">📚 Education</button></li>
+                    <li><button type="button" class="category-btn" data-category="Entertainment">🎬 Entertainment</button></li>
+                    <li><button type="button" class="category-btn" data-category="Environment">🌱 Environment</button></li>
+                    <li><button type="button" class="category-btn" data-category="Transportation">🚗 Transportation</button></li>
+                    <li><button type="button" class="category-btn" data-category="Food">🍕 Food</button></li>
+                    <li><button type="button" class="category-btn" data-category="Fashion">👗 Fashion</button></li>
+                    <li><button type="button" class="category-btn" data-category="Random">🎲 Random</button></li>
                 </ul>
             </aside>
 
@@ -33,7 +33,7 @@
                 <div class="toolbar">
                     <div class="explore-search">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        <input type="text" placeholder="Search the archive…">
+                        <input type="text" id="idea-search" placeholder="Search the archive…">
                     </div>
                     <details class="filter-dd" name="filterdrop">
                         <summary>Difficulty <span class="selected-value" id="difficulty-value">All</span></summary>
@@ -65,7 +65,16 @@
 
                 <div class="content">
                     {% for idea in ideas_data %}
-                        <div class="card">
+                        <div 
+                            class="card"
+                            data-title="{{ idea.title }}"
+                            data-description="{{ idea.description }}"
+                            data-difficulty="{{ idea.difficulty }}"
+                            data-icon="{{ get_category_icon(idea.category) }}"
+                            data-category="{{ idea.category }}"
+                            data-posted="{{ idea.date_created | time_ago }}"
+                            data-creator="{{ 'Anonymous' if idea.anonymous else idea.user.username }}" >
+>
                             <div class="card-top">
                                 <div id="card-hole">&nbsp;</div>
                                 <p id="card-number" class="card-number" >#{{ "%05d"|format(idea.id) }}</p>
@@ -137,9 +146,9 @@
                         <label class="form-group">
                             <span class="form-label">Difficulty</span>
                             <div class="segmented form-segmented">
-                                <label class="segment-option"><input type="radio" name="form-difficulty" value="EASY" checked><span>Easy</span></label>
-                                <label class="segment-option"><input type="radio" name="form-difficulty" value="MEDIUM"><span>Medium</span></label>
-                                <label class="segment-option"><input type="radio" name="form-difficulty" value="HARD"><span>Hard</span></label>
+                                <label class="segment-option"><input type="radio" name="form-difficulty" value="Easy" checked><span>Easy</span></label>
+                                <label class="segment-option"><input type="radio" name="form-difficulty" value="Medium"><span>Medium</span></label>
+                                <label class="segment-option"><input type="radio" name="form-difficulty" value="Hard"><span>Hard</span></label>
                             </div>
                         </label>
                     </div>
