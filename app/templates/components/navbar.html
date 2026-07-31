@@ -12,7 +12,7 @@
             <a href="/">💡 Lost Ideas</a>
         </div>
         <ul class="nav-links">
-            <li><a href="{{ url_for('paging.main', page='explore') }}"">Explore</a></li>
+            <li><a href="{{ url_for('paging.main', page='explore') }}" class="{% if page == 'explore' %}active{% endif %}">Explore</a></li>
             <li><a href="#">Leaderboards</a></li>
             <li><a href="#">About</a></li>
         </ul>

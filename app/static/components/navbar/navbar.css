@@ -60,9 +60,8 @@ ul li a:hover {
     background-color: var(--ink-line);
 }
 
-ul li a.active {
+ul li a.active, ul li a:active {
     color: var(--thread-gold);
-    background-color: var(--amber-ink);
 }
 
 .account {
@@ -95,6 +94,11 @@ ul li a.active {
 
 #profile{
     background-color: var(--paper);
+}
+
+#profile:hover{
+    background-color: var(--paper-dark);
+    border-color: var(--paper-dark);
 }
 
 main {
