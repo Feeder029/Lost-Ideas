@@ -66,13 +66,14 @@ h1 span {
 .btn {
     display: flex;
     width: 100%;
-    max-width: 420px;
+    max-width: fit-content;
     gap: 1rem;
+    text-align: center;
 }
 
 .btn a {
     flex: 1;
-    padding: 1rem;
+    padding: 1rem 3rem;
     font-family: "IBM Plex Mono", monospace;
     font-size: 1rem;
     letter-spacing: 10px;
