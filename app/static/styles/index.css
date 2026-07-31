@@ -74,7 +74,8 @@ h1 span {
     flex: 1;
     padding: 1rem;
     font-family: "IBM Plex Mono", monospace;
-    font-size: .85rem;
+    font-size: 1rem;
+    letter-spacing: 10px;
     font-weight: bold;
     text-transform: uppercase;
     border-radius: 6px;
