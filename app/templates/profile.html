@@ -15,22 +15,28 @@
             <p class="profile-bio"></p>
         </div>
         <div class="profile-stats">
-            <div class="profile-stats-row">
-                <h2 class="profile-stats-num" id="ideas-shared">{{ stats.ideas_shared }}</h2>
+
+            <button class="profile-stats-row" type="button" data-target="ideas-shared">
+                <h2 class="profile-stats-num" id="ideas-shared">
+                    {{ stats.ideas_shared }}
+                </h2>
                 <p class="stats-title">Ideas Shared</p>
-            </div>
-            <div class="profile-stats-row">
-                <h2 class="profile-stats-num" id="ideas-adopted">{{ stats.ideas_adopted }}</h2>
+            </button>
+
+            <button class="profile-stats-row" type="button" data-target="ideas-adopted">
+                <h2 class="profile-stats-num" id="ideas-adopted">
+                    {{ stats.ideas_adopted }}
+                </h2>
                 <p class="stats-title">Ideas Adopted</p>
-            </div>
-            <div class="profile-stats-row">
-                <h2 class="profile-stats-num" id="ideas-Built">{{ stats.ideas_built }}</h2>
+            </button>
+
+            <button class="profile-stats-row" type="button" data-target="ideas-built">
+                <h2 class="profile-stats-num" id="ideas-built">
+                    {{ stats.ideas_built }}
+                </h2>
                 <p class="stats-title">Ideas Built</p>
-            </div>
-            <!-- <div class="profile-stats-row">
-                <h2 class="profile-stats-num" id="followers">1.2M</h2>
-                <p class="stats-title">Followers</p>
-            </div> -->
+            </button>
+
         </div>
         <div class="ideas-container">
             <div class="ideas-container-heading">
@@ -68,5 +74,8 @@
         </div>
     </section>
     
+    {% block scripts %}
+        <script src="{{ url_for('static', filename='components/profile/profile.js') }}"></script>
+    {% endblock %}
 </body>
 </html>
