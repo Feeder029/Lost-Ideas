@@ -115,7 +115,7 @@
                 <h2>📂File an Idea</h2>
                 <p><em> Every field is required — someone out there is waiting to adopt this.</em></p>
                 
-                <form class="idea-form" action="/ideas" method="POST">
+                <form class="idea-form" action="/share" method="POST">
                     <label class="form-group">
                         <span class="form-label">Title</span>
                         <input type="text" name="form-title" placeholder="e.g. asdas das dasdasd" required>
@@ -165,7 +165,8 @@
         </div>
 
         <div class="card-details-container" id="card-details-container">
-        
+            <form action="{{ url_for('ideas.adopt') }}" method="POST">
+                <input type="hidden" name="idea_id" id="card-details-idea-id">
                 <div class="card-details-card">
                     <div class="card-details-top">
                         <div class="card-profile-avatar" id="card-profile-avatar"></div>
@@ -185,7 +186,7 @@
                     </div>
                     <button type="submit" class="adopt-stamp submit-idea-btn">🚀 Adopt this Idea</button>
                 </div>
-           
+            </form>
         </div>
 
     </section>

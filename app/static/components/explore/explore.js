@@ -70,9 +70,10 @@ function initExplore() {
     cardAdoptBtns.forEach(btn => {
 
         btn.addEventListener("click", () => {
+            document.getElementById("card-details-idea-id").value = btn.dataset.id;
 
             document.getElementById("card-details-number").textContent = "#" + String(btn.dataset.id).padStart(5, "0");
-
+            
             document.getElementById("card-profile-name").textContent = btn.dataset.creator;
 
             const creator = btn.dataset.creator.trim();

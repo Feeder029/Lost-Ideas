@@ -13,3 +13,4 @@ class Idea(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
     user = db.relationship("User", back_populates="ideas")
+    stats = db.relationship("Stat", back_populates="idea", cascade="all, delete-orphan")

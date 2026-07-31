@@ -9,3 +9,4 @@ class User(db.Model):
     # bio = db.Column(db.Text, default="No bio yet.")
 
     ideas = db.relationship("Idea", back_populates="user")
+    stats = db.relationship("Stat", back_populates="user", cascade="all, delete-orphan")

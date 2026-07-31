@@ -3,11 +3,16 @@ from dotenv import load_dotenv
 
 from app.config import Config
 from app.extensions import db
+
 from app.models.user import User
+from app.models.idea import Idea
+from app.models.stat import Stat
+
 from app.routes.ideas import idea_bp
 from app.routes.paging import paging_bp
 from app.routes.stats import stats_bp
 from app.routes.auth import auth_bp
+
 from app.utils.helpers import get_initials, time_ago
 
 load_dotenv()
