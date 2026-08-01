@@ -4,6 +4,7 @@ const ideasContent = document.querySelector(".ideas-content");
 const ideasHeading = document.querySelector("#ideas-heading");
 
 let previousScrollPosition = 0;
+let activeLink = null;
 
 statLinks.forEach(link => {
 
@@ -11,7 +12,23 @@ statLinks.forEach(link => {
 
         event.preventDefault();
 
-        previousScrollPosition = window.scrollY;
+        if ( ideasContainer.classList.contains("show") && activeLink === link ) { 
+            ideasContainer.classList.remove("show"); 
+            window.scrollTo({ 
+                top: previousScrollPosition, behavior: "smooth" 
+            }); 
+
+            activeLink = null; 
+            return; 
+        } 
+        
+        const isOpening = !ideasContainer.classList.contains("show");
+
+        if (isOpening) { 
+            previousScrollPosition = window.scrollY; 
+        }
+
+        activeLink = link;
 
         try {
 
@@ -81,12 +98,14 @@ statLinks.forEach(link => {
 
             ideasContainer.classList.add("show");
 
-            setTimeout(() => {
-                window.scrollBy({
-                    top: 180,
-                    behavior: "smooth"
-                });
-            }, 150);
+            if (isOpening) {
+                setTimeout(() => {
+                    window.scrollBy({
+                        top: 280,
+                        behavior: "smooth"
+                    });
+                }, 150);
+            }
         } catch (error) {
             console.error("Failed to load ideas:", error);
         }
