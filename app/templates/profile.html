@@ -16,52 +16,47 @@
         </div>
         <div class="profile-stats">
 
-            <button class="profile-stats-row" type="button" data-target="ideas-shared">
+            <a class="profile-stats-row" href="{{ url_for('stats.requested_ideas', action='shared') }}" draggable="false" data-target="ideas-shared" data-title="Ideas Shared">
                 <h2 class="profile-stats-num" id="ideas-shared">
                     {{ stats.ideas_shared }}
                 </h2>
                 <p class="stats-title">Ideas Shared</p>
-            </button>
+            </a>
 
-            <button class="profile-stats-row" type="button" data-target="ideas-adopted">
+            <a class="profile-stats-row" href="{{ url_for('stats.requested_ideas', action='adopted') }}"  draggable="false" data-target="ideas-adopted" data-title="Ideas Adopted">
                 <h2 class="profile-stats-num" id="ideas-adopted">
                     {{ stats.ideas_adopted }}
                 </h2>
                 <p class="stats-title">Ideas Adopted</p>
-            </button>
+            </a>
 
-            <button class="profile-stats-row" type="button" data-target="ideas-built">
+            <a class="profile-stats-row" href="{{ url_for('stats.requested_ideas', action='built') }}"  draggable="false"data-target="ideas-built" data-title="Ideas Built">
                 <h2 class="profile-stats-num" id="ideas-built">
                     {{ stats.ideas_built }}
                 </h2>
                 <p class="stats-title">Ideas Built</p>
-            </button>
+            </a>
 
         </div>
         <div class="ideas-container">
             <div class="ideas-container-heading">
-                <h2>Ideas shared</h2>
+                <h2 id="ideas-heading">Ideas Shared</h2>
             </div>
             <div class="divider">&nbsp;</div>
             <div class="ideas-content">
-                <div class="idea">
-                    <span class="idea-category">💡</span>
-                    <div class="idea-details">
-                        <h2 class="idea-title">Lorem Ipsum DOlor</h2>
-                        <p class="idea-posted">Posted 3 Days Ago</p>
+                {% for stat in requested_ideas %}
+                    <div class="idea">
+                        <span class="idea-category">💡</span>
+                        <div class="idea-details">
+                            <h2 class="idea-title">{{ stat.idea.title }}</h2>
+                            <p class="idea-posted">{{ stat.idea.date_created | time_ago }}</p>
+                        </div>
+                        <span class="idea-difficulty">{{ stat.idea.difficulty }}</span>
+                        <a href="#" class="actions">...</a>
                     </div>
-                    <span class="idea-difficulty">MEDIUM</span>
-                    <a href="#" class="actions">...</a>
-                </div>
-                <div class="idea">
-                    <span class="idea-category">💡</span>
-                    <div class="idea-details">
-                        <h2 class="idea-title">Lorem Ipsum DOlor</h2>
-                        <p class="idea-posted">Posted 3 Days Ago</p>
-                    </div>
-                    <span class="idea-difficulty">MEDIUM</span>
-                    <a href="#" class="actions">...</a>
-                </div>
+                {% else %}
+                    <p class="no-ideas">No ideas found.</p>
+                {% endfor %}
             </div>
         </div>
         <div class="profile-achievements">

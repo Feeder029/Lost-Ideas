@@ -11,8 +11,6 @@ def get_profile_stats(user_id):
         "ideas_built": ideas_built
     }
 
-    # return {
-    #     "ideas_shared": Idea.query.filter_by(user_id=user_id).count(),
-    #     "ideas_adopted": 0,
-    #     "ideas_built": 0,
-    # }
+def get_requested_ideas(user_id, action):
+    requested_ideas = Stat.query.filter_by(user_id=user_id, action=action).all()
+    return requested_ideas

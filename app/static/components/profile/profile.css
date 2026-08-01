@@ -72,6 +72,7 @@ body {
     justify-content:space-between;
     gap: 10px;
     margin-bottom: 15px;
+
 }
 
 .profile-stats-row{
@@ -82,6 +83,8 @@ body {
     border-radius: 15px;
     text-align: center;
     font: inherit;
+    text-decoration: none;
+    list-style: none;
     cursor: pointer;
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
