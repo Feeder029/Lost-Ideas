@@ -83,13 +83,42 @@ statLinks.forEach(link => {
                     actions.href = "#";
                     actions.textContent = "...";
 
+                    const actionsWrapper = document.createElement("div");
+                    actionsWrapper.className = "actions-wrapper";
+
+                    const actionsContainer = document.createElement("div");
+                    actionsContainer.className = "actions-container";
+
+                    const view = document.createElement("a");
+                    view.className = "view";
+                    view.href = "#";
+                    view.textContent = "👁️ View";
+
+                    const edit = document.createElement("a");
+                    edit.className = "edit";
+                    edit.href = "#";
+                    edit.textContent = "✏️ Edit";
+
+                    const deleteBtn = document.createElement("a");
+                    deleteBtn.className = "delete";
+                    deleteBtn.href = "#";
+                    deleteBtn.textContent = "🗑️ Delete";
+
+                    actionsContainer.append(view, edit, deleteBtn);
+
                     details.append(title, posted);
+
+                    actionsWrapper.append(
+                        actions,
+                        actionsContainer
+                    );
 
                     ideaElement.append(
                         category,
                         details,
                         difficulty,
-                        actions
+                        actions,
+                        actionsWrapper
                     );
 
                     ideasContent.appendChild(ideaElement);
@@ -109,5 +138,33 @@ statLinks.forEach(link => {
         } catch (error) {
             console.error("Failed to load ideas:", error);
         }
+    });
+});
+
+document.addEventListener("click", (event) => {
+
+    const actionsBtn = event.target.closest(".actions");
+
+    if (actionsBtn) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const idea = actionsBtn.closest(".idea");
+        const clickedMenu = idea.querySelector(".actions-container");
+
+        // Close all other menus
+        ideasContent.querySelectorAll(".actions-container.show").forEach(menu => {
+            if (menu !== clickedMenu) {
+                menu.classList.remove("show");
+            }
+        });
+
+        clickedMenu.classList.toggle("show");
+
+        return;
+    }
+
+    ideasContent.querySelectorAll(".actions-container.show").forEach(menu => {
+        menu.classList.remove("show");
     });
 });

@@ -52,7 +52,17 @@
                             <p class="idea-posted">{{ stat.idea.date_created | time_ago }}</p>
                         </div>
                         <span class="idea-difficulty">{{ stat.idea.difficulty }}</span>
-                        <a href="#" class="actions">...</a>
+                        <div class="actions-wrapper">
+
+                            <a href="#" class="actions">...</a>
+
+                            <div class="actions-container">
+                                <a href="#" class="view">👁️ View</a>
+                                <a href="#" class="edit">✏️ Edit</a>
+                                <a href="#" class="delete">🗑️ Delete</a>
+                            </div>
+
+                        </div>
                     </div>
                 {% else %}
                     <p class="no-ideas">No ideas found.</p>
