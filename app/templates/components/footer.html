@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lost Ideas</title>
+{% block styles %}
     <link rel="stylesheet" href="{{ url_for('static', filename='components/footer/footer.css') }}">
-</head>
+{% endblock %}
+
+{% block content %}
 <body>
     <footer>
         <div class="top">
@@ -18,5 +15,4 @@
         </div>
     </footer>
 
-</body>
-</html>
+{% endblock %}

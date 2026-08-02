@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lost Ideas</title>
+{% block styles %}
     <link rel="stylesheet" href="{{ url_for('static', filename='components/navbar/navbar.css') }}">
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <nav>
         <div class="logo">
             <a href="/">💡 Lost Ideas</a>
@@ -35,6 +31,7 @@
 
     </main>
     
-    <script src="{{ url_for('static', filename='components/navbar/navbar.js') }}"></script>
-</body>
-</html>
+    {% block scripts %}
+        <script src="{{ url_for('static', filename='components/navbar/navbar.js') }}"></script>
+    {% endblock %}
+{% endblock %}
