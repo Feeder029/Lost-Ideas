@@ -60,4 +60,27 @@ def adopt():
     return redirect(url_for("paging.main", page="explore"))
 
     
-    
+@idea_bp.route("/delete/<int:idea_id>", methods=["POST"])
+def delete_idea(idea_id):
+    user = db.session.get(User, session.get("user_id"))
+
+    if user is None:
+        session.pop("user_id", None)
+        return redirect(url_for("auth.login"))
+
+    idea = db.session.get(Idea, idea_id)
+
+    if idea is None:
+        return "Idea not found", 404
+
+    if idea.user_id != user.id:
+        return "You are not authorized to delete this idea", 403
+
+    try:
+        db.session.delete(idea)
+        db.session.commit()
+        return redirect(url_for("paging.main", page="explore"))
+    except Exception as e:
+        db.session.rollback()
+        print("ERROR:", e)
+        return "Failed to delete idea", 500
