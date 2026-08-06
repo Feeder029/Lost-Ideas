@@ -33,7 +33,7 @@ def requested_ideas(action):
 
     return jsonify([
         {
-            "idea_id": stat.idea.id,
+            "id": stat.idea.id,
             "title": stat.idea.title,
             "description": stat.idea.description,
             "difficulty": stat.idea.difficulty,
@@ -42,3 +42,12 @@ def requested_ideas(action):
         }
         for stat in requested_ideas
     ])
+
+@stats_bp.route("/new_stats", methods=["GET"])
+def new_stats():
+    user = db.session.get(User, session.get("user_id"))
+
+    if user is None:
+        return "", 401
+
+    return jsonify(get_profile_stats(user.id))

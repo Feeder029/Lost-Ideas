@@ -41,7 +41,17 @@
             <div class="divider">&nbsp;</div>
             <div class="ideas-content">
                 {% for stat in requested_ideas %}
-                    <div class="idea">
+                    <div 
+                        class="idea"
+                        data-id="{{ stat.idea.id }}"
+                        data-title="{{ stat.idea.title }}"
+                        data-description="{{ stat.idea.description }}"
+                        data-difficulty="{{ stat.idea.difficulty }}"
+                        data-icon="{{ get_category_icon(stat.idea.category) }}"
+                        data-category="{{ stat.idea.category }}"
+                        data-date="{{ stat.idea.date_created.timestamp() }}"
+                        data-creator="{{ 'Anonymous' if stat.idea.anonymous else stat.idea.user.username }}" >
+                        
                         <span class="idea-category">💡</span>
                         <div class="idea-details">
                             <h2 class="idea-title">{{ stat.idea.title }}</h2>

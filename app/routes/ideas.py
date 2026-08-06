@@ -71,10 +71,4 @@ def delete(idea_id):
     if not deleted_idea:
         return "Failed to delete idea", 500
 
-    return jsonify(
-        {
-            "message": "Idea deleted successfully",
-            "idea_id": idea_id,
-            "title": deleted_idea.title
-        }
-    )
+    return "", 204
