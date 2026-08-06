@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, render_template, request, jsonify, session, url_for
 from app.models.idea import Idea
 from app.models.user import User
-from app.services.idea_service import adopt_idea, create_idea
+from app.services.idea_service import adopt_idea, create_idea, delete_idea
 from app.extensions import db
 from app.utils.helpers import time_ago
 
@@ -54,33 +54,27 @@ def adopt():
 
     if idea is False:
         return redirect(url_for("paging.main", page="explore"))
-        
-        # return "You already adopted this idea", 400
 
     return redirect(url_for("paging.main", page="explore"))
 
     
 @idea_bp.route("/delete/<int:idea_id>", methods=["POST"])
-def delete_idea(idea_id):
+def delete(idea_id):
     user = db.session.get(User, session.get("user_id"))
 
     if user is None:
         session.pop("user_id", None)
         return redirect(url_for("auth.login"))
 
-    idea = db.session.get(Idea, idea_id)
+    deleted_idea = delete_idea(user.id, idea_id)
 
-    if idea is None:
-        return "Idea not found", 404
-
-    if idea.user_id != user.id:
-        return "You are not authorized to delete this idea", 403
-
-    try:
-        db.session.delete(idea)
-        db.session.commit()
-        return redirect(url_for("paging.main", page="explore"))
-    except Exception as e:
-        db.session.rollback()
-        print("ERROR:", e)
+    if not deleted_idea:
         return "Failed to delete idea", 500
+
+    return jsonify(
+        {
+            "message": "Idea deleted successfully",
+            "idea_id": idea_id,
+            "title": deleted_idea.title
+        }
+    )

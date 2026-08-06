@@ -56,3 +56,22 @@ def adopt_idea(user_id, idea_id):
     db.session.commit()
 
     return True
+
+
+def delete_idea(user_id, idea_id):
+    idea = Idea.query.filter_by(id=idea_id, user_id=user_id).first()
+
+    if idea is None:
+        return None
+
+    if idea.user_id != user_id:
+        return False
+
+    try:
+        db.session.delete(idea)
+        db.session.commit()
+        return idea
+    except Exception as e:
+        db.session.rollback()
+        print("ERROR:", e)
+        raise e
