@@ -72,3 +72,32 @@ def delete(idea_id):
         return "Failed to delete idea", 500
 
     return "", 204
+
+@idea_bp.route('/edit/<int:idea_id>', methods=["POST"])
+def edit(idea_id):
+    user = db.session.get(User, session.get("user_id"))
+
+    if user is None:
+        session.pop("user_id", None)
+        return redirect(url_for("auth.login"))
+
+    idea = Idea.query.get(idea_id)
+
+    if idea is None or idea.user_id != user.id:
+        return "Idea not found or unauthorized", 404
+
+    title = request.form.get("form-title", "").strip()
+    description = request.form.get("form-description", "").strip()
+    difficulty = request.form.get("form-difficulty")
+    category = request.form.get("form-category")
+    anonymous = "form-anonymous" in request.form
+
+    idea.title = title
+    idea.description = description
+    idea.difficulty = difficulty
+    idea.category = category
+    idea.anonymous = anonymous
+
+    db.session.commit()
+
+    return redirect(url_for("paging.main", page="explore"))
