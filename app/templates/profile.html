@@ -83,6 +83,31 @@
                 </ul>
             </div>
         </div>
+
+        <div class="card-details-container" id="card-details-container">
+            <form action="{{ url_for('ideas.adopt') }}" method="POST">
+                <input type="hidden" name="idea_id" id="card-details-idea-id">
+                <div class="card-details-card">
+                    <div class="card-details-top">
+                        <div class="card-profile-avatar" id="card-profile-avatar"></div>
+                        <div class="card-top-container">
+                            <h2 class="card-profile-name" id="card-profile-name"></h2>
+                            <p class="card-posted" id="card-details-posted"></p>
+                        </div>
+                        <p class="card-number" id="card-details-number"></p>
+                        <button id="btn-card-details-close" class="close">&times;</button>
+                    </div>
+                    <div class="card-details-content">
+                        <h2 class="card-difficulty" id="card-details-difficulty"></h2>
+                        <h1 class="card-title" id="card-details-title"><span id="card-details-category"></span></h1>
+                        <h2 class="card-details-headline">Description</h2>
+                        <div class="card-divider"></div>
+                        <p class="card-details-description" id="card-details-description"></p>
+                    </div>
+                    <button type="submit" class="adopt-stamp submit-idea-btn">🚀 Adopt this Idea</button>
+                </div>
+            </form>
+        </div>
     </section>
 {% endblock %}
 
