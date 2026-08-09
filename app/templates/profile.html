@@ -50,6 +50,7 @@
                         data-icon="{{ get_category_icon(stat.idea.category) }}"
                         data-category="{{ stat.idea.category }}"
                         data-date="{{ stat.idea.date_created.timestamp() }}"
+                        data-anonymous="{{ stat.idea.anonymous | lower }}"
                         data-creator="{{ 'Anonymous' if stat.idea.anonymous else stat.idea.user.username }}" >
                         
                         <span class="idea-category">💡</span>
@@ -63,9 +64,21 @@
                             <a href="#" class="actions">...</a>
                             {% if current_user %}
                                 <div class="actions-container">
-                                    <a href="#" class="view">👁️ View</a>
-                                    <a href="#" class="edit">✏️ Edit</a>
-                                    <a href="#" class="delete">🗑️ Delete</a>
+                                    <a class="btn-view">👁️ View</a>
+                                   <a 
+                                        class="btn-edit"
+                                        data-id="{{ stat.idea.id }}"
+                                        data-title="{{ stat.idea.title }}"
+                                        data-description="{{ stat.idea.description }}"
+                                        data-difficulty="{{ stat.idea.difficulty }}"
+                                        data-icon="{{ get_category_icon(stat.idea.category) }}"
+                                        data-category="{{ stat.idea.category }}"
+                                        data-date="{{ stat.idea.date_created.timestamp() }}"
+                                        data-anonymous="{{ stat.idea.anonymous | lower }}"
+                                        data-creator="{{ 'Anonymous' if stat.idea.anonymous else stat.idea.user.username }}" >
+                                        ✏️ Edit
+                                    </a>
+                                    <a class="btn-delete">🗑️ Delete</a>
                                 </div>
                             {% endif %}
                         </div>
@@ -84,29 +97,62 @@
             </div>
         </div>
 
-        <div class="card-details-container" id="card-details-container">
-            <form action="{{ url_for('ideas.adopt') }}" method="POST">
-                <input type="hidden" name="idea_id" id="card-details-idea-id">
-                <div class="card-details-card">
-                    <div class="card-details-top">
-                        <div class="card-profile-avatar" id="card-profile-avatar"></div>
-                        <div class="card-top-container">
-                            <h2 class="card-profile-name" id="card-profile-name"></h2>
-                            <p class="card-posted" id="card-details-posted"></p>
-                        </div>
-                        <p class="card-number" id="card-details-number"></p>
-                        <button id="btn-card-details-close" class="close">&times;</button>
-                    </div>
-                    <div class="card-details-content">
-                        <h2 class="card-difficulty" id="card-details-difficulty"></h2>
-                        <h1 class="card-title" id="card-details-title"><span id="card-details-category"></span></h1>
-                        <h2 class="card-details-headline">Description</h2>
-                        <div class="card-divider"></div>
-                        <p class="card-details-description" id="card-details-description"></p>
-                    </div>
-                    <button type="submit" class="adopt-stamp submit-idea-btn">🚀 Adopt this Idea</button>
+        <div id="idea-form-container" class="idea-form-container">
+            <div class="idea-form-card">
+                <div class="idea-form-top">
+                    <h3>• EDIT CASE FILE</h3>
+                    <button id="btn-idea-close" class="close">&times;</button>
                 </div>
-            </form>
+                <h2>Edit the Idea</h2>
+                <p><em> Every field is required — someone out there is waiting to adopt this.</em></p>
+                
+                <form class="idea-form" action="/share" method="POST">
+                    <label class="form-group">
+                        <span class="form-label">Title</span>
+                        <input type="text" name="form-title" placeholder="e.g. asdas das dasdasd" required>
+                    </label>
+
+                    <label class="form-group">
+                        <span class="form-label">Description</span>
+                        <textarea rows="4" name="form-description" placeholder="What's the idea? " required></textarea>
+                    </label>
+
+                    <div class="form-row">
+                        <label class="form-group">
+                            <span class="form-label">Category</span>
+                            <select class="form-dd" name="form-category">
+                                <option value="Technology">💻 Technology</option>
+                                <option value="Healthcare">🏥 Healthcare</option>
+                                <option value="Business">💼 Business</option>
+                                <option value="Games">🎮 Games</option>
+                                <option value="Education">📚 Education</option>
+                                <option value="Entertainment">🎬 Entertainment</option>
+                                <option value="Environment">🌱 Environment</option>
+                                <option value="Transportation">🚗 Transportation</option>
+                                <option value="Food">🍕 Food</option>
+                                <option value="Fashion">👗 Fashion</option>
+                                <option value="Random">🎲 Random</option>
+                            </select>
+                        </label>
+                
+                        <label class="form-group">
+                            <span class="form-label">Difficulty</span>
+                            <div class="segmented form-segmented">
+                                <label class="segment-option"><input type="radio" name="form-difficulty" value="Easy" checked><span>Easy</span></label>
+                                <label class="segment-option"><input type="radio" name="form-difficulty" value="Medium"><span>Medium</span></label>
+                                <label class="segment-option"><input type="radio" name="form-difficulty" value="Hard"><span>Hard</span></label>
+                            </div>
+                        </label>
+                    </div>
+
+                    <label class="toggle-row">
+                        <span class="form-label" style="margin:0;">Post anonymously?</span>
+                        <span class="toggle-switch"><input type="checkbox" id="form-anonymous" name="form-anonymous"><span class="toggle-track"><span class="toggle-thumb"></span></span></span>
+                    </label>
+
+                    <button type="submit" class="adopt-stamp submit-idea-btn">🚀 Submit Idea</button>
+                </form>
+            </div>
         </div>
     </section>
 {% endblock %}

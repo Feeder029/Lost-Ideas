@@ -81,22 +81,29 @@ async function loadIdeas(link, isOpening = false) {
             const actionsContainer = document.createElement("div");
             actionsContainer.className = "actions-container";
 
-            const view = document.createElement("a");
-            view.className = "view";
-            view.href = "#";
-            view.textContent = "👁️ View";
+            const viewBtn = document.createElement("a");
+            viewBtn.className = "btn-view";
+            viewBtn.href = "#";
+            viewBtn.textContent = "👁️ View";
 
-            const edit = document.createElement("a");
-            edit.className = "edit";
-            edit.href = "#";
-            edit.textContent = "✏️ Edit";
+            const editBtn = document.createElement("a");
+            editBtn.className = "btn-edit";
+            editBtn.href = "#";
+            editBtn.textContent = "✏️ Edit";
+            editBtn.dataset.id = idea.id;
+            editBtn.dataset.title = idea.title;
+            editBtn.dataset.description = idea.description;
+            editBtn.dataset.difficulty = idea.difficulty;
+            editBtn.dataset.category = idea.category;
+            editBtn.dataset.anonymous = idea.anonymous;
+            editBtn.dataset.creator = idea.creator ?? "Anonymous";
 
             const deleteBtn = document.createElement("a");
-            deleteBtn.className = "delete";
+            deleteBtn.className = "btn-delete";
             deleteBtn.href = "#";
             deleteBtn.textContent = "🗑️ Delete";
 
-            actionsContainer.append(view, edit, deleteBtn);
+            actionsContainer.append(viewBtn, editBtn, deleteBtn);
 
             details.append(title, posted);
 
@@ -188,7 +195,9 @@ ideasContent.addEventListener("click", async event => {
         return;
     }
 
-    const deleteBtn = event.target.closest(".delete");
+    const deleteBtn = event.target.closest(".btn-delete");
+    const editBtn = event.target.closest(".btn-edit");
+    const viewBtn = event.target.closest(".btn-view");
 
     if (deleteBtn) {
 
@@ -224,8 +233,27 @@ ideasContent.addEventListener("click", async event => {
         }
 
         return;
-    }
+    } else if (editBtn) {
 
+        document.querySelector('[name="form-title"]').value = editBtn.dataset.title;
+        document.querySelector('[name="form-description"]').value = editBtn.dataset.description;
+        document.querySelector('[name="form-category"]').value = editBtn.dataset.category;
+
+        const difficultyRadio = document.querySelector(
+            `[name="form-difficulty"][value="${editBtn.dataset.difficulty}"]`
+        );
+        if (difficultyRadio) difficultyRadio.checked = true;
+
+        document.getElementById("form-anonymous").checked = editBtn.dataset.anonymous === "true";
+
+        document.getElementById("idea-form-container").classList.add("show");
+        document.body.classList.add("no-scroll");
+
+        document.querySelector(".idea-form").dataset.editingId = editBtn.dataset.id;
+
+        return;
+    }
+    
 });
 
 document.addEventListener("click", event => {
@@ -238,4 +266,28 @@ document.addEventListener("click", event => {
         menu.classList.remove("show");
     });
 
+});
+
+const ideaFormContainer = document.getElementById("idea-form-container");
+const btnIdeaClose = document.getElementById("btn-idea-close");
+
+function closeIdeaForm() {
+    ideaFormContainer.classList.remove("show");
+    document.body.classList.remove("no-scroll");
+    document.querySelector(".idea-form").reset();
+    delete document.querySelector(".idea-form").dataset.editingId;
+}
+
+btnIdeaClose.addEventListener("click", closeIdeaForm);
+
+ideaFormContainer.addEventListener("click", event => {
+    if (event.target === ideaFormContainer) {
+        closeIdeaForm();
+    }
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && ideaFormContainer.classList.contains("show")) {
+        closeIdeaForm();
+    }
 });

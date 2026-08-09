@@ -38,6 +38,8 @@ def requested_ideas(action):
             "description": stat.idea.description,
             "difficulty": stat.idea.difficulty,
             "category": stat.idea.category,
+            "anonymous": stat.idea.anonymous,
+            "creator": stat.idea.user.username if not stat.idea.anonymous else "Anonymous",
             "date_created": time_ago(stat.idea.date_created)
         }
         for stat in requested_ideas
