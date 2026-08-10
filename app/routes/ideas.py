@@ -101,3 +101,19 @@ def edit(idea_id):
     db.session.commit()
 
     return redirect(url_for("paging.main", page="explore"))
+
+@idea_bp.route('/view')
+def view():
+    idea_id = request.args.get("idea_id")
+
+    if not idea_id or not idea_id.isdigit():
+        return "Invalid idea", 400
+
+    idea = Idea.query.get(idea_id)
+
+    if idea is None:
+        return "Idea not found", 404
+
+    time_ago_str = time_ago(idea.date_created)
+
+    return render_template("view_idea.html", idea=idea, time_ago=time_ago_str)
