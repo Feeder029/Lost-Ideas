@@ -75,3 +75,26 @@ def delete_idea(user_id, idea_id):
         db.session.rollback()
         print("ERROR:", e)
         raise e
+
+def edit_idea(user_id, idea_id, title, description, difficulty, category, anonymous):
+    idea = Idea.query.filter_by(id=idea_id, user_id=user_id).first()
+
+    if idea is None:
+        return None
+
+    if idea.user_id != user_id:
+        return False
+
+    idea.title = title
+    idea.description = description
+    idea.difficulty = difficulty
+    idea.category = category
+    idea.anonymous = anonymous
+
+    try:
+        db.session.commit()
+        return idea
+    except Exception as e:
+        db.session.rollback()
+        print("ERROR:", e)
+        raise e
