@@ -6,6 +6,9 @@ const ideasHeading = document.querySelector("#ideas-heading");
 let previousScrollPosition = 0;
 let activeLink = null;
 
+const cardTitle = document.querySelector("#card-details-title");
+const cardCategory = document.querySelector("#card-details-category");
+
 async function loadStats() {
 
     const response = await fetch("/new_stats");
@@ -85,6 +88,15 @@ async function loadIdeas(link, isOpening = false) {
             viewBtn.className = "btn-view";
             viewBtn.href = "#";
             viewBtn.textContent = "👁️ View";
+            viewBtn.dataset.id = idea.id;
+            viewBtn.dataset.title = idea.title;
+            viewBtn.dataset.description = idea.description;
+            viewBtn.dataset.difficulty = idea.difficulty;
+            viewBtn.dataset.icon = idea.icon;
+            viewBtn.dataset.category = idea.category;
+            viewBtn.dataset.date = idea.date;
+            viewBtn.dataset.anonymous = idea.anonymous;
+            viewBtn.dataset.creator = idea.creator ?? "Anonymous";
 
             const editBtn = document.createElement("a");
             editBtn.className = "btn-edit";
@@ -252,6 +264,21 @@ ideasContent.addEventListener("click", async event => {
         document.querySelector(".idea-form").dataset.editingId = editBtn.dataset.id;
 
         return;
+    } else if (viewBtn) {
+
+        cardCategory.textContent = viewBtn.dataset.icon;
+
+        cardTitle.appendChild(cardCategory);
+        cardTitle.append(document.createTextNode(viewBtn.dataset.title));
+
+        document.querySelector("#card-details-description").textContent = viewBtn.dataset.description;
+        document.querySelector("#card-details-difficulty").textContent ="Difficulty • " + viewBtn.dataset.difficulty;
+        document.querySelector("#card-details-posted").textContent = "Posted " + viewBtn.dataset.date;
+        document.querySelector("#card-profile-name").textContent = viewBtn.dataset.anonymous === "true" ? "Anonymous" : viewBtn.dataset.creator;
+        document.querySelector("#card-profile-avatar").textContent = viewBtn.dataset.anonymous === "true" ? "A" : viewBtn.dataset.creator.split(" ").map(word => word[0]).join("").slice(0, 2).toUpperCase();
+
+        document.getElementById("card-details-container").classList.add("show");
+        document.body.classList.add("no-scroll");
     }
     
 });
@@ -270,6 +297,8 @@ document.addEventListener("click", event => {
 
 const ideaFormContainer = document.getElementById("idea-form-container");
 const btnIdeaClose = document.getElementById("btn-idea-close");
+const cardDetailsCard = document.getElementById("card-details-container");
+const btnCardClose = document.getElementById("btn-card-details-close");
 
 function closeIdeaForm() {
     ideaFormContainer.classList.remove("show");
@@ -278,7 +307,16 @@ function closeIdeaForm() {
     delete document.querySelector(".idea-form").dataset.editingId;
 }
 
+function closeCardDetails() {
+    cardDetailsCard.classList.remove("show");
+    document.body.classList.remove("no-scroll");
+    cardTitle.textContent = "";
+    cardCategory.textContent = "";
+    document.querySelector(".card-details-form").reset();
+}
+
 btnIdeaClose.addEventListener("click", closeIdeaForm);
+btnCardClose.addEventListener("click", closeCardDetails);
 
 ideaFormContainer.addEventListener("click", event => {
     if (event.target === ideaFormContainer) {
@@ -289,5 +327,17 @@ ideaFormContainer.addEventListener("click", event => {
 document.addEventListener("keydown", event => {
     if (event.key === "Escape" && ideaFormContainer.classList.contains("show")) {
         closeIdeaForm();
+    }
+});
+
+cardDetailsCard.addEventListener("click", event => {
+    if (event.target === cardDetailsCard) {
+        closeCardDetails();
+    }
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && cardDetailsCard.classList.contains("show")) {
+        closeCardDetails();
     }
 });

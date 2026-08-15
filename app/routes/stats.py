@@ -4,7 +4,7 @@ from app.extensions import db
 from app.models import stat
 from app.models.user import User
 from app.services.stats_service import get_profile_stats, get_requested_ideas
-from app.utils.helpers import time_ago
+from app.utils.helpers import get_category_icon, time_ago
 
 stats_bp = Blueprint("stats", __name__)
 
@@ -38,9 +38,10 @@ def requested_ideas(action):
             "description": stat.idea.description,
             "difficulty": stat.idea.difficulty,
             "category": stat.idea.category,
+            "icon": get_category_icon(stat.idea.category),
             "anonymous": stat.idea.anonymous,
             "creator": stat.idea.user.username if not stat.idea.anonymous else "Anonymous",
-            "date_created": time_ago(stat.idea.date_created)
+            "date_created": stat.idea.date_created.timestamp(),
         }
         for stat in requested_ideas
     ])
