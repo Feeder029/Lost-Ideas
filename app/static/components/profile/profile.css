@@ -253,12 +253,12 @@ body {
     padding: 0.5rem;
 }
 
-.actions-container .view {
+.actions-container .btn-view {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
 
-.actions-container .delete {
+.actions-container .btn-delete {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
