@@ -9,6 +9,7 @@ class Idea(db.Model):
     category = db.Column(db.Text)
     difficulty = db.Column(db.Text)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    date_updated = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     anonymous = db.Column(db.Boolean, default=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 

@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, render_template, request, jsonify, session, url_for
 from app.models.idea import Idea
 from app.models.user import User
-from app.services.idea_service import adopt_idea, create_idea, delete_idea
+from app.services.idea_service import adopt_idea, create_idea, delete_idea, edit_idea
 from app.extensions import db
 from app.utils.helpers import time_ago
 
@@ -92,15 +92,22 @@ def edit(idea_id):
     category = request.form.get("form-category")
     anonymous = "form-anonymous" in request.form
 
-    idea.title = title
-    idea.description = description
-    idea.difficulty = difficulty
-    idea.category = category
-    idea.anonymous = anonymous
+    edited_idea = edit_idea(user.id, idea_id, title, description, difficulty, category, anonymous)
 
-    db.session.commit()
+    if edited_idea is None:
+        return "Failed to edit idea", 500
 
-    return redirect(url_for("paging.main", page="explore"))
+    return jsonify({
+        "id": edited_idea.id,
+        "title": edited_idea.title,
+        "description": edited_idea.description,
+        "difficulty": edited_idea.difficulty,
+        "category": edited_idea.category,
+        "anonymous": edited_idea.anonymous,
+        "date_updated": edited_idea.date_updated.timestamp(),
+    })
+
+    # return redirect(url_for("paging.main", page="profile"))
 
 @idea_bp.route('/view')
 def view():
