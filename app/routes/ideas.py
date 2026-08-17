@@ -73,7 +73,7 @@ def delete(idea_id):
 
     return "", 204
 
-@idea_bp.route('/edit/<int:idea_id>', methods=["POST"])
+@idea_bp.route('/edit/<int:idea_id>', methods=["GET", "POST"])
 def edit(idea_id):
     user = db.session.get(User, session.get("user_id"))
 
@@ -97,17 +97,17 @@ def edit(idea_id):
     if edited_idea is None:
         return "Failed to edit idea", 500
 
-    return jsonify({
-        "id": edited_idea.id,
-        "title": edited_idea.title,
-        "description": edited_idea.description,
-        "difficulty": edited_idea.difficulty,
-        "category": edited_idea.category,
-        "anonymous": edited_idea.anonymous,
-        "date_updated": edited_idea.date_updated.timestamp(),
-    })
+    # return jsonify({
+    #     "id": edited_idea.id,
+    #     "title": edited_idea.title,
+    #     "description": edited_idea.description,
+    #     "difficulty": edited_idea.difficulty,
+    #     "category": edited_idea.category,
+    #     "anonymous": edited_idea.anonymous,
+    #     "date_updated": edited_idea.date_updated.timestamp(),
+    # })
 
-    # return redirect(url_for("paging.main", page="profile"))
+    return redirect(url_for("paging.main", page="profile"))
 
 @idea_bp.route('/view')
 def view():

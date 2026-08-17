@@ -246,6 +246,9 @@ ideasContent.addEventListener("click", async event => {
 
         return;
     } else if (editBtn) {
+        const editForm = document.querySelector(".idea-form");
+
+        editForm.action = `/edit/${editBtn.dataset.id}`;
 
         document.querySelector('[name="form-title"]').value = editBtn.dataset.title;
         document.querySelector('[name="form-description"]').value = editBtn.dataset.description;
@@ -261,7 +264,7 @@ ideasContent.addEventListener("click", async event => {
         document.getElementById("idea-form-container").classList.add("show");
         document.body.classList.add("no-scroll");
 
-        document.querySelector(".idea-form").dataset.editingId = editBtn.dataset.id;
+        editForm.dataset.editingId = editBtn.dataset.id;
 
         return;
     } else if (viewBtn) {
