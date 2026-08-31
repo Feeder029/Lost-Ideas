@@ -49,7 +49,8 @@ async function loadIdeas(link, isOpening = false) {
     } else {
 
         ideas.forEach(idea => {
-
+            const date = new Date(idea.date_created * 1000);
+            
             const ideaElement = document.createElement("div");
             ideaElement.className = "idea";
             ideaElement.dataset.id = idea.id;
@@ -67,7 +68,11 @@ async function loadIdeas(link, isOpening = false) {
 
             const posted = document.createElement("p");
             posted.className = "idea-posted";
-            posted.textContent = `Posted ${idea.date_created}`;
+            posted.textContent = `Posted ${date.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            })}`;
 
             const difficulty = document.createElement("span");
             difficulty.className = "idea-difficulty";
@@ -94,7 +99,11 @@ async function loadIdeas(link, isOpening = false) {
             viewBtn.dataset.difficulty = idea.difficulty;
             viewBtn.dataset.icon = idea.icon;
             viewBtn.dataset.category = idea.category;
-            viewBtn.dataset.date = idea.date;
+            viewBtn.dataset.date = `${date.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                })}`;    
             viewBtn.dataset.anonymous = idea.anonymous;
             viewBtn.dataset.creator = idea.creator ?? "Anonymous";
 
