@@ -227,33 +227,52 @@ ideasContent.addEventListener("click", async event => {
         const idea = deleteBtn.closest(".idea");
         const ideaId = idea.dataset.id;
 
-        if (!confirm("Delete this idea?")) {
-            return;
-        }
+        const deleteConfirmContainer = document.getElementById("delete-confirm-container");
+        const btnDeleteYes = document.getElementById("btn-delete-yes");
+        const btnDeleteNo = document.getElementById("btn-delete-no");
 
-        try {
-            const response = await fetch(`/delete/${ideaId}`, {
-                method: "POST"
-            });
+        deleteConfirmContainer.classList.add("show");
+        document.body.classList.add("no-scroll");
 
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
+        btnDeleteYes.replaceWith(btnDeleteYes.cloneNode(true));
+
+        const newBtnDeleteYes = document.getElementById("btn-delete-yes");
+
+        newBtnDeleteYes.addEventListener("click", async () => {
+
+            deleteConfirmContainer.classList.remove("show");
+            document.body.classList.remove("no-scroll");
+
+            try {
+                const response = await fetch(`/delete/${ideaId}`, {
+                    method: "POST"
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const tasks = [loadStats()];
+
+                if (activeLink) {
+                    tasks.push(loadIdeas(activeLink));
+                }
+
+                await Promise.all(tasks);
+
+            } catch (error) {
+                console.error(error);
+                alert("Failed to delete idea.");
             }
+        });
 
-            const tasks = [loadStats()];
-
-            if (activeLink) {
-                tasks.push(loadIdeas(activeLink));
-            }
-
-            await Promise.all(tasks);
-
-        } catch (error) {
-            console.error(error);
-            alert("Failed to delete idea.");
-        }
+        btnDeleteNo.onclick = () => {
+            deleteConfirmContainer.classList.remove("show");
+            document.body.classList.remove("no-scroll");
+        };
 
         return;
+
     } else if (editBtn) {
         const editForm = document.querySelector(".idea-form");
 
