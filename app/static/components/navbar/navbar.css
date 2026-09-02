@@ -212,6 +212,7 @@ main {
 #btn-logout-no:hover {
     background-color: var(--ink-soft);
     border-color: var(--ink);
+    color: var(--paper);
 }
 
 #btn-logout-yes {

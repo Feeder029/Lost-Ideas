@@ -185,11 +185,22 @@
                         <div class="card-divider"></div>
                         <p class="card-details-description" id="card-details-description"></p>
                     </div>
-                    <button type="submit" class="adopt-stamp submit-idea-btn">🚀 Adopt this Idea</button>
+                    <button type="submit" id="btn-submit-idea" class="adopt-stamp submit-idea-btn">🚀 Adopt this Idea</button>
                 </div>
             </form>
         </div>
 
+        <div id="submit-confirm-container" class="submit-confirm-container">
+            <div class="submit-confirm-card">
+                <h2>Submit Idea?</h2>
+                <p>Are you sure you want to submit this idea?</p>
+
+                <div class="submit-confirm-actions">
+                    <button id="btn-submit-no" type="button">No</button>
+                    <button id="btn-submit-yes" type="button">Yes, Submit</button>
+                </div>
+            </div>
+        </div>
     </section>
 
 {% endblock %}

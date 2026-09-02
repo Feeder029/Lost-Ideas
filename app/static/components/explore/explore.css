@@ -730,6 +730,103 @@ body.no-scroll{
     box-shadow:0 6px 0 var(--filed-teal-deep);
 }
 
+.submit-confirm-container {
+    display: none;
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    padding: 1rem;
+    z-index: 10001;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-confirm-container.show {
+    display: flex;
+}
+
+.submit-confirm-card {
+    width: 420px;
+    max-width: calc(100vw - 2rem);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    padding: 2rem;
+
+    background-color: var(--paper);
+    color: var(--ink);
+
+    border-top-right-radius: 25px;
+    border: 1px solid var(--paper-dark);
+}
+
+.submit-confirm-card h2 {
+    font-family: var(--source);
+    font-size: 1.8rem;
+    line-height: 1.25;
+    margin: 0;
+}
+
+.submit-confirm-card p {
+    font-family: var(--arial);
+    color: var(--pencil);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.submit-confirm-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 0.5rem;
+}
+
+.submit-confirm-actions button {
+    font-family: var(--ibm);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    padding: 10px 20px;
+
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        background-color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+#btn-submit-no {
+    color: var(--ink);
+    background-color: transparent;
+    border: 1.5px solid var(--ink-line);
+}
+
+#btn-submit-no:hover {
+    background-color: var(--stamp-red);
+    border-color: var(--stamp-red);
+    color: var(--paper);
+}
+
+#btn-submit-yes {
+    color: var(--paper);
+    background-color: var(--filed-teal);
+    border: 1.5px solid var(--filed-teal-deep);
+}
+
+#btn-submit-yes:hover {
+    transform: translateY(-2px);
+}
+
 .form-dd, .form-dd option{
     cursor: pointer;
 }

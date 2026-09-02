@@ -102,6 +102,7 @@ function initExplore() {
     });
 
     filter();
+    submitIdeaForm();
 }
 
 function filter(){
@@ -197,5 +198,73 @@ function filter(){
     filterCards();
 
 }
+
+function submitIdeaForm() {
+
+    const ideaForm = document.querySelector(".idea-form");
+    const submitConfirmContainer = document.getElementById("submit-confirm-container");
+    const btnSubmitYes = document.getElementById("btn-submit-yes");
+    const btnSubmitNo = document.getElementById("btn-submit-no");
+
+    if (
+        !ideaForm ||
+        !submitConfirmContainer ||
+        !btnSubmitYes ||
+        !btnSubmitNo
+    ) {
+        console.error("Submit confirmation elements not found.");
+        return;
+    }
+
+    ideaForm.addEventListener("submit", event => {
+
+        event.preventDefault();
+
+        submitConfirmContainer.classList.add("show");
+        document.body.classList.add("no-scroll");
+    });
+
+    btnSubmitNo.addEventListener("click", () => {
+
+        submitConfirmContainer.classList.remove("show");
+        document.body.classList.remove("no-scroll");
+
+    });
+
+    btnSubmitYes.addEventListener("click", () => {
+
+        submitConfirmContainer.classList.remove("show");
+        document.body.classList.remove("no-scroll");
+
+        ideaForm.submit();
+
+    });
+
+    submitConfirmContainer.addEventListener("click", event => {
+
+        if (event.target === submitConfirmContainer) {
+
+            submitConfirmContainer.classList.remove("show");
+            document.body.classList.remove("no-scroll");
+
+        }
+
+    });
+
+    document.addEventListener("keydown", event => {
+
+        if (
+            event.key === "Escape" &&
+            submitConfirmContainer.classList.contains("show")
+        ) {
+
+            submitConfirmContainer.classList.remove("show");
+            document.body.classList.remove("no-scroll");
+
+        }
+
+    });
+}
+
 
 initExplore();
