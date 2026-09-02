@@ -28,7 +28,17 @@
     </nav>
 
     <main id="content">
+        <div id="logout-confirm-container" class="logout-confirm-container">
+            <div class="logout-confirm-card">
+                <h2>Logout?</h2>
+                <p>Are you sure you want to logout?</p>
 
+                <div class="logout-confirm-actions">
+                    <button id="btn-logout-no" type="button">No</button>
+                    <button id="btn-logout-yes" type="button">Yes, Logout</button>
+                </div>
+            </div>
+        </div>
     </main>
     
     {% block scripts %}

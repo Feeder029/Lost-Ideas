@@ -1,25 +1,41 @@
-// function initNavbar() {
-    
-//     const authForm = document.getElementById("auth-container");
-//     const authOpenBtn = document.getElementById("btn-auth-open");
-//     const authCloseBtn = document.getElementById("btn-auth-close");
+function initNavbar() {
+    const logoutBtn = document.getElementById("btn-auth-logout");
+    const logoutConfirmContainer = document.getElementById("logout-confirm-container");
+    const btnLogoutYes = document.getElementById("btn-logout-yes");
+    const btnLogoutNo = document.getElementById("btn-logout-no");
 
-//     authOpenBtn.addEventListener("click", () => {
-//         authForm.classList.add("show");
-//         document.body.classList.add("no-scroll");
-//     });
+    logoutBtn.addEventListener("click", event => {
+        event.preventDefault();
 
-//     authCloseBtn.addEventListener("click", () => {
-//         authForm.classList.remove("show");
-//         document.body.classList.remove("no-scroll");
-//     });
+        logoutConfirmContainer.classList.add("show");
+        document.body.classList.add("no-scroll");
+    });
 
-//     authForm.addEventListener("click", (e) => {
-//         if(e.target === authForm) {
-//             authForm.classList.remove("show");
-//             document.body.classList.remove("no-scroll");
-//         }
-//     });
-// }
+    btnLogoutNo.addEventListener("click", () => {
+        logoutConfirmContainer.classList.remove("show");
+        document.body.classList.remove("no-scroll");
+    });
 
-// initNavbar();
+    btnLogoutYes.addEventListener("click", () => {
+        window.location.href = logoutBtn.href;
+    });
+
+    logoutConfirmContainer.addEventListener("click", event => {
+        if (event.target === logoutConfirmContainer) {
+            logoutConfirmContainer.classList.remove("show");
+            document.body.classList.remove("no-scroll");
+        }
+    });
+
+    document.addEventListener("keydown", event => {
+        if (
+            event.key === "Escape" &&
+            logoutConfirmContainer.classList.contains("show")
+        ) {
+            logoutConfirmContainer.classList.remove("show");
+            document.body.classList.remove("no-scroll");
+        }
+    });
+}
+
+initNavbar();
