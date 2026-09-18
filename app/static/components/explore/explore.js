@@ -105,19 +105,23 @@ function initExplore() {
     submitIdeaForm();
 }
 
-function filter(){
+function filter() {
     const filterSearch = document.getElementById("idea-search");
     const filterCategory = document.querySelectorAll(".category-btn");
     const filterDifficulty = document.querySelectorAll('input[name="diff"]');
     const filterSort = document.querySelectorAll('input[name="sortby"]');
 
     const cardsContainer = document.querySelector(".content");
+    const pagination = document.getElementById("pagination");
 
-    if(!filterSearch || !cardsContainer) {
-        return
+    if (!filterSearch || !cardsContainer || !pagination) {
+        return;
     }
 
     const cards = Array.from(cardsContainer.querySelectorAll(".card"));
+
+    const cardsPerPage = 9;
+    let currentPage = 1;
 
     let selectedCategory = "All";
 
@@ -131,72 +135,219 @@ function filter(){
 
             button.classList.add("active");
 
+            currentPage = 1;
             filterCards();
-            
         });
     });
 
-
     filterSearch.addEventListener("input", () => {
+        currentPage = 1;
         filterCards();
     });
 
     filterDifficulty.forEach(radio => {
-
         radio.addEventListener("change", () => {
+            currentPage = 1;
             filterCards();
         });
-
     });
 
     filterSort.forEach(radio => {
-
         radio.addEventListener("change", () => {
+            currentPage = 1;
             filterCards();
-        })
-    })
+        });
+    });
 
-    function filterCards(){
+    function filterCards() {
+
         const searchValue = filterSearch.value.trim().toLowerCase();
 
-        const selectedDifficulty = document.querySelector('input[name="diff"]:checked')?.value || "All";
-        const selectedSort = document.querySelector('input[name="sortby"]:checked')?.value || "Newest";
+        const selectedDifficulty =
+            document.querySelector('input[name="diff"]:checked')?.value || "All";
 
-        cards.forEach(card => {
+        const selectedSort =
+            document.querySelector('input[name="sortby"]:checked')?.value || "Newest";
+
+
+        // -------------------------
+        // FILTER
+        // -------------------------
+
+        const filteredCards = cards.filter(card => {
+
             const title = card.dataset.title || "";
             const description = card.dataset.description || "";
             const category = card.dataset.category || "";
             const difficulty = card.dataset.difficulty || "";
             const creator = card.dataset.creator || "";
 
-            const matchSearch = title.toLowerCase().includes(searchValue) || description.toLowerCase().includes(searchValue) || creator.toLowerCase().includes(searchValue);
-            const matchCategory = selectedCategory === "All" || category === selectedCategory;
-            const matchDifficulty = selectedDifficulty === "All" || difficulty === selectedDifficulty;
+            const matchSearch =
+                title.toLowerCase().includes(searchValue) ||
+                description.toLowerCase().includes(searchValue) ||
+                creator.toLowerCase().includes(searchValue);
 
-            const matches = matchSearch && matchCategory && matchDifficulty;
+            const matchCategory =
+                selectedCategory === "All" ||
+                category === selectedCategory;
 
-            card.classList.toggle("hidden", !matches);
+            const matchDifficulty =
+                selectedDifficulty === "All" ||
+                difficulty === selectedDifficulty;
 
+            return matchSearch &&
+                   matchCategory &&
+                   matchDifficulty;
         });
 
+
+        // -------------------------
+        // SORT
+        // -------------------------
+
         if (selectedSort === "Newest") {
-            cards.sort((a, b) => {
+
+            filteredCards.sort((a, b) => {
                 return Number(b.dataset.date) - Number(a.dataset.date);
             });
+
         } else if (selectedSort === "Oldest") {
-            cards.sort((a, b) => {
+
+            filteredCards.sort((a, b) => {
                 return Number(a.dataset.date) - Number(b.dataset.date);
             });
         }
 
+
+        // -------------------------
+        // PAGINATION
+        // -------------------------
+
+        const totalPages = Math.ceil(
+            filteredCards.length / cardsPerPage
+        );
+
+        // Prevent invalid page
+        if (currentPage > totalPages && totalPages > 0) {
+            currentPage = totalPages;
+        }
+
+        const start = (currentPage - 1) * cardsPerPage;
+        const end = start + cardsPerPage;
+
+        const pageCards = filteredCards.slice(start, end);
+
+
+        // -------------------------
+        // SHOW / HIDE CARDS
+        // -------------------------
+
         cards.forEach(card => {
+            card.classList.add("hidden");
+        });
+
+        pageCards.forEach(card => {
+
+            card.classList.remove("hidden");
+
             cardsContainer.appendChild(card);
         });
-        
+
+
+        // -------------------------
+        // PAGINATION BUTTONS
+        // -------------------------
+
+        renderPagination(totalPages);
     }
 
-    filterCards();
 
+    function renderPagination(totalPages) {
+
+        pagination.replaceChildren();
+
+        if (totalPages <= 1) {
+            return;
+        }
+
+        // Previous button
+        const previousBtn = document.createElement("button");
+
+        previousBtn.textContent = "←";
+        previousBtn.className = "pagination-btn";
+
+        previousBtn.disabled = currentPage === 1;
+
+        previousBtn.addEventListener("click", () => {
+            if (currentPage > 1) {
+                currentPage--;
+                filterCards();
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            }
+        });
+
+        pagination.appendChild(previousBtn);
+
+
+        // Page numbers
+        for (let page = 1; page <= totalPages; page++) {
+
+            const pageBtn = document.createElement("button");
+
+            pageBtn.textContent = page;
+            pageBtn.className = "pagination-btn";
+
+            if (page === currentPage) {
+                pageBtn.classList.add("active");
+            }
+
+            pageBtn.addEventListener("click", () => {
+
+                currentPage = page;
+
+                filterCards();
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+
+            pagination.appendChild(pageBtn);
+        }
+
+
+        // Next button
+        const nextBtn = document.createElement("button");
+
+        nextBtn.textContent = "→";
+        nextBtn.className = "pagination-btn";
+
+        nextBtn.disabled = currentPage === totalPages;
+
+        nextBtn.addEventListener("click", () => {
+
+            if (currentPage < totalPages) {
+                currentPage++;
+                filterCards();
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            }
+        });
+
+        pagination.appendChild(nextBtn);
+    }
+
+
+    // Initial filtering
+    filterCards();
 }
 
 function submitIdeaForm() {
