@@ -124,7 +124,11 @@ async function loadIdeas(link, isOpening = false) {
             deleteBtn.href = "#";
             deleteBtn.textContent = "🗑️ Delete";
 
-            actionsContainer.append(viewBtn, editBtn, deleteBtn);
+            if(link.dataset.title !== "Ideas Adopted" && link.dataset.title !== "Ideas Built") {
+                actionsContainer.append(viewBtn, editBtn, deleteBtn);
+            } else {
+                actionsContainer.append(viewBtn);
+            }
 
             details.append(title, posted);
 

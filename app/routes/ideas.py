@@ -97,16 +97,6 @@ def edit(idea_id):
     if edited_idea is None:
         return "Failed to edit idea", 500
 
-    # return jsonify({
-    #     "id": edited_idea.id,
-    #     "title": edited_idea.title,
-    #     "description": edited_idea.description,
-    #     "difficulty": edited_idea.difficulty,
-    #     "category": edited_idea.category,
-    #     "anonymous": edited_idea.anonymous,
-    #     "date_updated": edited_idea.date_updated.timestamp(),
-    # })
-
     return redirect(url_for("paging.main", page="profile"))
 
 @idea_bp.route('/view')
