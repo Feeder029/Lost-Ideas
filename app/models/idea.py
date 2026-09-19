@@ -8,6 +8,7 @@ class Idea(db.Model):
     description = db.Column(db.Text)
     category = db.Column(db.Text)
     difficulty = db.Column(db.Text)
+    adopted_count = db.Column(db.Integer, default=0)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     date_updated = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     anonymous = db.Column(db.Boolean, default=False, nullable=False)

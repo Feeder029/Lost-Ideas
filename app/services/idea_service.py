@@ -53,6 +53,7 @@ def adopt_idea(user_id, idea_id):
     )
 
     db.session.add(stat)
+    idea.adopted_count += 1
     db.session.commit()
 
     return True
