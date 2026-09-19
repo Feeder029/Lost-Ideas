@@ -208,6 +208,53 @@ body {
     letter-spacing: 0.5px;
 }
 
+.ideas-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 2rem 0 1rem;
+}
+
+.ideas-pagination-btn {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.75rem;
+
+    color: var(--paper);
+    background: var(--ink-soft);
+
+    border: 1px solid var(--ink-line);
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.ideas-pagination-btn:hover:not(:disabled) {
+    background: var(--paper);
+    color: var(--ink);
+    transform: translateY(-2px);
+}
+
+.ideas-pagination-btn.active {
+    background: var(--thread-gold);
+    color: var(--ink);
+    border-color: var(--thread-gold);
+}
+
+.ideas-pagination-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
 .actions-wrapper {
     display: flex;
     align-items: center;
