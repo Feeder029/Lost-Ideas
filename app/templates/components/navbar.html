@@ -25,7 +25,9 @@
             </li>
 
             <li>
-                <a href="#">Leaderboards</a>
+                <a href="{{ url_for('paging.main', page='leaderboards') }}" class="{% if page == 'leaderboards' %}active{% endif %}">
+                    Leaderboards
+                </a>
             </li>
 
            <li>
