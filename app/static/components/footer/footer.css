@@ -23,6 +23,10 @@ footer{
     font-size: 1.3rem;
 }
 
+.top h3 span{
+    color: var(--stamp-red);
+}
+
 .top p{
     font-size: 0.8rem;
     color: var(--pencil);
