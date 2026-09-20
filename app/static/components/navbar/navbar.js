@@ -38,4 +38,37 @@ function initNavbar() {
     });
 }
 
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+const profileBtn = document.getElementById("profile");
+const profileDropdown = document.getElementById("profile-dropdown");
+
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+    });
+}
+
+if (profileBtn && profileDropdown) {
+    profileBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        profileDropdown.classList.toggle("show");
+    });
+}
+
+document.addEventListener("click", (event) => {
+
+    if (
+        profileDropdown &&
+        profileBtn &&
+        !profileDropdown.contains(event.target) &&
+        !profileBtn.contains(event.target)
+    ) {
+        profileDropdown.classList.remove("show");
+    }
+
+});
+
 initNavbar();

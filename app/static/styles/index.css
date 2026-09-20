@@ -142,15 +142,6 @@ h1 span {
         gap: .8rem;
     }
 
-    .btn {
-        flex-direction: column;
-        max-width: 100%;
-    }
-
-    .btn button {
-        width: 100%;
-    }
-
     .above {
         font-size: .7rem;
     }

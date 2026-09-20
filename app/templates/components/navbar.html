@@ -7,23 +7,57 @@
         <div class="logo">
             <a href="/">💡 Lost Ideas</a>
         </div>
-        <ul class="nav-links">
-            <li><a href="{{ url_for('paging.main', page='explore') }}" class="{% if page == 'explore' %}active{% endif %}">Explore</a></li>
-            <li><a href="#">Leaderboards</a></li>
-            <li><a href="#">About</a></li>
+
+        <button
+            id="menu-toggle"
+            class="menu-toggle"
+            type="button"
+            aria-label="Toggle navigation"
+        >
+            ☰
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+            <li>
+                <a href="{{ url_for('paging.main', page='explore') }}" class="{% if page == 'explore' %}active{% endif %}">
+                    Explore
+                </a>
+            </li>
+
+            <li>
+                <a href="#">Leaderboards</a>
+            </li>
+
+            <li>
+                <a href="#">About</a>
+            </li>
         </ul>
 
         {% if current_user %}
-            <div class="account">
-                <!-- <a href="" id="settings">⚙️</a>
-                <a href="" id="notification">🔔</a> -->
-                <a href="/logout" id="btn-auth-logout">LOGOUT</a>     <!-- temporary -->
-                <a id="profile" href="{{ url_for('paging.main', page='profile') }}">👤</a>
+        <div class="profile-menu">
+            <button
+                id="profile"
+                class="profile-btn"
+                type="button"
+            >
+                <span class="profile-icon">👤</span>
+                <span class="profile-text">Account</span>
+            </button>
+
+            <div id="profile-dropdown" class="profile-dropdown">
+                <a href="{{ url_for('paging.main', page='profile') }}">
+                    Profile
+                </a>
+
+                <a href="/logout" id="btn-auth-logout">
+                    Logout
+                </a>
             </div>
+        </div>
         {% else %}
-            <div class="auth">
-                <a href="/auth" id="btn-auth-open" >Login</a>
-            </div>
+        <div class="auth">
+            <a href="/auth" id="btn-auth-open">Login</a>
+        </div>
         {% endif %}
     </nav>
 
@@ -40,7 +74,7 @@
             </div>
         </div>
     </main>
-    
+
     {% block scripts %}
         <script src="{{ url_for('static', filename='components/navbar/navbar.js') }}"></script>
     {% endblock %}
