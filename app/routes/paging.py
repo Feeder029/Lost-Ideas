@@ -16,7 +16,7 @@ def home():
 
 @paging_bp.route("/main/<page>")
 def main(page):
-    protected_pages = {"profile", "about"}
+    protected_pages = {"profile"}
 
     user = None
     stats = None

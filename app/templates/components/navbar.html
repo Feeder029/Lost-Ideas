@@ -28,8 +28,10 @@
                 <a href="#">Leaderboards</a>
             </li>
 
-            <li>
-                <a href="#">About</a>
+           <li>
+                <a href="{{ url_for('paging.main', page='about') }}" class="{% if page == 'about' %}active{% endif %}">
+                    About
+                </a>
             </li>
         </ul>
 

@@ -1,3 +1,112 @@
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='components/about/about.css') }}">
+{% endblock %}  
+
 {% block content %}
-About
+
+<div class="about">
+
+    <div class="about-label">
+        ● About the archive
+    </div>
+
+    <h1>
+        Lost <span>Ideas</span>
+    </h1>
+
+    <p class="about-intro">
+        "Every idea starts somewhere. But some just get left behind."
+    </p>
+
+
+    <div class="about-divider"></div>
+
+
+    <div class="about-grid">
+
+        <section class="about-section">
+            <h2>Why does this exist?</h2>
+
+            <p>
+                We all have ideas that never become anything.
+                A project we started and abandoned. A thought we wrote
+                down and forgot. Something we wanted to build, but never did.
+            </p>
+
+            <p>
+                <strong>Lost Ideas is an archive for those things.</strong>
+            </p>
+
+            <p>
+                Instead of letting an unfinished idea disappear,
+                you can leave it here. Someone else might find it,
+                see something in it, and take it somewhere you couldn't.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>How it works</h2>
+
+            <div class="about-steps">
+
+                <div class="about-step">
+                    <span>01</span>
+                    <div>
+                        <h3>Share</h3>
+                        <p>Leave an idea behind.</p>
+                    </div>
+                </div>
+
+                <div class="about-step">
+                    <span>02</span>
+                    <div>
+                        <h3>Explore</h3>
+                        <p>Find something someone else left behind.</p>
+                    </div>
+                </div>
+
+                <div class="about-step">
+                    <span>03</span>
+                    <div>
+                        <h3>Adopt</h3>
+                        <p>Give an idea another chance.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+
+    <div class="about-divider"></div>
+
+
+    <section class="about-note">
+
+        <span class="about-note-mark">"</span>
+
+        <p>
+            Wonder is the beginning of wisdom    
+        </p>
+
+        <small>
+            — Socrates, in Plato's Theaetetus
+        </small>
+        
+    </section>
+
+
+    <!-- <div class="about-divider"></div>
+
+
+    <div class="about-end">
+        <span>For the forgotten.</span>
+        <span>For the unfinished.</span>
+        <span>For what could have been.</span>
+    </div> -->
+
+</div>
+
+
 {% endblock %}
