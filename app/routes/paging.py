@@ -10,7 +10,9 @@ paging_bp = Blueprint("paging", __name__)
 
 @paging_bp.route("/")
 def home():
-    return render_template("index.html")
+    shared = Idea.query.count()
+    adopted = db.session.query(Idea).filter(Idea.adopted_count > 0).count()
+    return render_template("index.html", shared=shared, adopted=adopted)
 
 @paging_bp.route("/main/<page>")
 def main(page):
