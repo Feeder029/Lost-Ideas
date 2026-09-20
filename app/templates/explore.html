@@ -10,23 +10,31 @@
             <p>Filter by drawer, then adopt whatever catches your eye.</p>
         </div>
         <div class="main-containter">
-            <aside class="side-nav">
-                <div class="category-head">Category</div>
-                <ul class="category">
-                    <li><button type="button" class="category-btn active" data-category="All">📂 All Drawers</button></li>
-                    <li><button type="button" class="category-btn" data-category="Technology">💻 Technology</button></li>
-                    <li><button type="button" class="category-btn" data-category="Healthcare">🏥 Healthcare</button></li>
-                    <li><button type="button" class="category-btn" data-category="Business">💼 Business</button></li>
-                    <li><button type="button" class="category-btn" data-category="Games">🎮 Games</button></li>
-                    <li><button type="button" class="category-btn" data-category="Education">📚 Education</button></li>
-                    <li><button type="button" class="category-btn" data-category="Entertainment">🎬 Entertainment</button></li>
-                    <li><button type="button" class="category-btn" data-category="Environment">🌱 Environment</button></li>
-                    <li><button type="button" class="category-btn" data-category="Transportation">🚗 Transportation</button></li>
-                    <li><button type="button" class="category-btn" data-category="Food">🍕 Food</button></li>
-                    <li><button type="button" class="category-btn" data-category="Fashion">👗 Fashion</button></li>
-                    <li><button type="button" class="category-btn" data-category="Random">🎲 Random</button></li>
-                </ul>
-            </aside>
+            <div class="category-filter">
+                <button type="button" class="category-toggle" id="category-toggle">
+                    <span>Category</span>
+                    <span>☰</span>
+                </button>
+
+                <aside class="side-nav" id="side-nav">
+                    <div class="category-head">Category</div>
+
+                    <ul class="category">
+                        <li><button type="button" class="category-btn active" data-category="All">📂 All Drawers</button></li>
+                        <li><button type="button" class="category-btn" data-category="Technology">💻 Technology</button></li>
+                        <li><button type="button" class="category-btn" data-category="Healthcare">🏥 Healthcare</button></li>
+                        <li><button type="button" class="category-btn" data-category="Business">💼 Business</button></li>
+                        <li><button type="button" class="category-btn" data-category="Games">🎮 Games</button></li>
+                        <li><button type="button" class="category-btn" data-category="Education">📚 Education</button></li>
+                        <li><button type="button" class="category-btn" data-category="Entertainment">🎬 Entertainment</button></li>
+                        <li><button type="button" class="category-btn" data-category="Environment">🌱 Environment</button></li>
+                        <li><button type="button" class="category-btn" data-category="Transportation">🚗 Transportation</button></li>
+                        <li><button type="button" class="category-btn" data-category="Food">🍕 Food</button></li>
+                        <li><button type="button" class="category-btn" data-category="Fashion">👗 Fashion</button></li>
+                        <li><button type="button" class="category-btn" data-category="Random">🎲 Random</button></li>
+                    </ul>
+                </aside>
+            </div>
 
             <!-- Card container -->
             <div class="container">

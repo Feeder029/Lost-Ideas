@@ -424,5 +424,32 @@ function submitIdeaForm() {
     });
 }
 
+const categoryToggle = document.getElementById("category-toggle");
+const sideNav = document.getElementById("side-nav");
+
+if (categoryToggle && sideNav) {
+    categoryToggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        sideNav.classList.toggle("show");
+    });
+
+    sideNav.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        if (event.target.closest(".category-btn")) {
+            sideNav.classList.remove("show");
+        }
+    });
+
+    document.addEventListener("click", (event) => {
+        if (
+            sideNav.classList.contains("show") &&
+            !sideNav.contains(event.target) &&
+            !categoryToggle.contains(event.target)
+        ) {
+            sideNav.classList.remove("show");
+        }
+    });
+}
 
 initExplore();
