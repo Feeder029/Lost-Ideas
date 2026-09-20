@@ -2098,8 +2098,11 @@ body.no-scroll {
     }
 
     .side-nav {
-        width: 92vw;
+        width: 60vw;
         padding: 1rem;
+    }
+    .category {
+        gap: 0rem;
     }
 
     .category button {
