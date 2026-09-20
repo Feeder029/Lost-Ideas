@@ -216,8 +216,15 @@ function filter() {
             filteredCards.sort((a, b) => {
                 return Number(a.dataset.date) - Number(b.dataset.date);
             });
+        } else if (selectedSort === "Most Adopted")  {
+            filteredCards.sort((a, b) => {
+                return Number(b.dataset.adopted) - Number(a.dataset.adopted);
+            });
+        } else if (selectedSort === "Never Adopted") {
+            filteredCards.sort((a, b) => {
+                return Number(a.dataset.adopted) - Number(b.dataset.adopted);
+            });
         }
-
 
         // -------------------------
         // PAGINATION
