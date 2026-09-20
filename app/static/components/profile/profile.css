@@ -448,8 +448,7 @@ body {
     font-family: var(--ibm);
     font-size: 0.8rem;
 }
-
-.card-details-container{
+.card-details-container {
     display: none;
     position: fixed;
     inset: 0;
@@ -461,18 +460,30 @@ body {
     z-index: 10000;
     justify-content: center;
     align-items: center;
+    overflow-y: auto;
 }
 
-.card-details-container.show  {
+.card-details-container.show {
     display: flex;
 }
 
-.card-details-card{
+.card-details-card {
+    width: 100%;
+    max-width: 650px;
+
+    max-height: calc(100vh - 2rem);
+
+    overflow-y: auto;
+
     display: flex;
     flex-direction: column;
+
     padding: 2rem;
+
     background-color: var(--paper);
+
     border-top-right-radius: 25px;
+
     gap: 1rem;
 }
 
@@ -485,22 +496,33 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    flex-shrink: 0;
+
     background-color: var(--ink);
     color: var(--paper);
+
     border: 1px solid var(--ink-line);
+
     width: 35px;
     height: 35px;
+
     padding: 0;
+
     border-radius: 50%;
+
     cursor: pointer;
+
     font-size: 1.5rem;
     line-height: 1;
-    transition: transform 0.25s ease,
-                background-color 0.25s ease,
-                border-color 0.25s ease;
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
 }
 
-#btn-card-details-close:hover{
+#btn-card-details-close:hover {
     background-color: var(--stamp-red);
     border-color: var(--stamp-red);
     transform: rotate(90deg);
@@ -508,46 +530,60 @@ body {
 
 .card-details-card {
     width: 550px;
+
     max-width: calc(100vw - 2rem);
+
     max-height: 90vh;
 
-    display: flex;
-    flex-direction: column;
+    overflow: hidden;
 
     padding: 2rem;
+
     background: var(--paper);
+
     border-top-right-radius: 25px;
 }
 
 .card-details-top {
     display: flex;
-    flex-shrink: 0;
     flex-direction: row;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
+
     position: relative;
     gap: 10px;
+
+    flex-shrink: 0;
 }
 
-.card-profile-avatar{
+.card-profile-avatar {
     background-color: var(--filed-teal);
     padding: 10px;
+
     display: flex;
-    border-radius: 50%;
-    color: var(--paper);
-    line-height: 1;
-    font-size: 1rem;
-    font-family: var(--special-elite);
     justify-content: center;
     align-items: center;
+
     width: 45px;
     height: 45px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    color: var(--paper);
+    font-family: var(--special-elite);
+    font-size: 1rem;
+    line-height: 1;
     text-align: center;
 }
 
-.card-top-container{
+.card-top-container {
+    min-width: 0;
+
     display: flex;
     flex-direction: column;
+
     gap: 0;
     padding: 0;
     margin: 0;
@@ -556,25 +592,22 @@ body {
 .card-details-content {
     flex: 1;
     min-height: 0;
+
     overflow-y: auto;
-    padding-right: 8px; 
+
+    padding-right: 8px;
 }
 
-.card-profile-name{
+.card-profile-name {
     font-family: var(--ibm);
     font-size: 1.1rem;
+    overflow-wrap: anywhere;
 }
 
-#card-details-number{
-    font-size: 1.2rem;
-    margin-left: auto;
-    padding-right: 15px;
-    position: relative;
-    right: 0;
-}
 
 #card-details-title {
     display: block;
+
     -webkit-line-clamp: unset;
     -webkit-box-orient: unset;
 
@@ -584,20 +617,23 @@ body {
     min-height: auto;
     height: auto;
 
+    margin: 1rem 0;
+
     font-size: 2rem;
     line-height: 1.25;
     letter-spacing: 1px;
+
     white-space: normal;
     overflow-wrap: break-word;
     word-break: break-word;
-
-    margin: 1rem 0;
 }
 
-.card-details-headline{
+.card-details-headline {
     font-family: var(--ibm);
     font-size: 1rem;
+
     color: var(--amber-ink);
+
     padding-bottom: 10px;
 }
 
@@ -613,12 +649,17 @@ body {
 
 .card-difficulty {
     font-family: "IBM Plex Mono", monospace;
+
     border: 1.5px solid var(--amber-ink);
     color: var(--amber-ink);
+
     text-align: left;
+
     font-size: 0.6rem;
     padding: 0.2rem 0.5rem;
+
     width: fit-content;
+
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -646,6 +687,17 @@ body {
     font-size: 0.7rem;
     letter-spacing: 2px;
     margin-top: auto;
+}
+
+#card-details-number {
+    font-size: 1.2rem;
+    margin-left: auto;
+    padding-right: 15px;
+
+    position: relative;
+    right: 0;
+
+    flex-shrink: 0;
 }
 
 .card-divider {
@@ -913,4 +965,665 @@ body {
 
 .form-dd, .form-dd option{
     cursor: pointer;
+}
+
+/* =========================================================
+   RESPONSIVE PROFILE
+   ========================================================= */
+
+/* ---------- TABLET ---------- */
+
+@media (max-width: 900px) {
+
+    .profile-container {
+        width: 100%;
+        max-width: 700px;
+        padding: 2rem 1.5rem;
+    }
+
+    .profile-card {
+        padding: 2.5rem 2rem;
+    }
+
+    .profile-stats {
+        gap: 8px;
+    }
+
+    .profile-stats-row {
+        padding: 15px 12px;
+    }
+
+    .ideas-container.show {
+        max-height: 1200px;
+    }
+
+    .idea {
+        grid-template-columns: 36px minmax(0, 1fr) 110px 30px;
+        padding: 11px 12px;
+    }
+
+    .idea-category {
+        width: 36px;
+    }
+
+    .idea-difficulty {
+        font-size: 10px;
+        padding: 4px 7px;
+    }
+
+    .actions-container {
+        right: -45px;
+    }
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 768px) {
+
+    .profile-container {
+        width: 100%;
+        max-width: none;
+        padding: 1.5rem 1rem 2rem;
+    }
+
+    /* Profile header */
+
+    .profile-card {
+        width: 100%;
+        padding: 2rem 1rem;
+        margin-bottom: 10px;
+        border-radius: 12px;
+    }
+
+    .profile-avatar {
+        width: 65px;
+        height: 65px;
+        font-size: 1rem;
+    }
+
+    .profile-name {
+        font-size: 1.4rem;
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    .profile-bio {
+        font-size: 0.85rem;
+    }
+
+
+    /* Stats */
+
+    .profile-stats {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 7px;
+        margin-bottom: 10px;
+    }
+
+    .profile-stats-row {
+        min-width: 0;
+        padding: 12px 6px;
+        border-radius: 10px;
+        border-width: 1px;
+    }
+
+    .profile-stats-num {
+        font-size: 1.25rem;
+        letter-spacing: 2px;
+    }
+
+    .stats-title {
+        font-size: 0.65rem;
+        line-height: 1.3;
+    }
+
+
+    /* Ideas container */
+
+    .ideas-container {
+        padding: 0 0.8rem;
+        border-radius: 12px;
+        border-width: 1px;
+    }
+
+    .ideas-container.show {
+        padding: 0.8rem;
+        max-height: 1500px;
+        margin-bottom: 10px;
+    }
+
+    .ideas-container-heading h2 {
+        font-size: 0.9rem;
+    }
+
+    .ideas-content {
+        gap: 6px;
+    }
+
+
+    /* Idea rows */
+
+    .idea {
+        width: 100%;
+        min-width: 0;
+
+        /*
+         * Category | Details | Difficulty | Actions
+         */
+        grid-template-columns:
+            32px
+            minmax(0, 1fr)
+            auto
+            28px;
+
+        gap: 5px;
+        padding: 10px 9px;
+        border-radius: 7px;
+    }
+
+    .idea-category {
+        width: 32px;
+        font-size: 1.2rem;
+    }
+
+    .idea-details {
+        min-width: 0;
+    }
+
+    .idea-title {
+        min-width: 0;
+        font-size: 0.85rem;
+    }
+
+    .idea-posted {
+        font-size: 0.6rem;
+    }
+
+    .idea-difficulty {
+        justify-self: end;
+        font-size: 9px;
+        padding: 3px 6px;
+        white-space: nowrap;
+    }
+
+
+    /* Actions */
+
+    .actions-wrapper {
+        position: relative;
+        width: 28px;
+    }
+
+    .actions {
+        width: 28px;
+        justify-content: center;
+        font-size: 0.75rem;
+    }
+
+    .actions-container {
+        top: calc(100% - 20px);
+        right: 0;
+        width: 115px;
+        border-radius: 10px;
+    }
+
+    .actions-container a {
+        font-size: 0.7rem;
+        padding: 0.5rem 0.6rem;
+    }
+
+    .actions-container .btn-view {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .actions-container .btn-delete {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+
+    /* Pagination */
+
+    .ideas-pagination {
+        gap: 5px;
+        margin: 1.3rem 0 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .ideas-pagination-btn {
+        min-width: 32px;
+        height: 32px;
+        padding: 0 8px;
+        font-size: 0.7rem;
+    }
+
+
+    /* Achievements */
+
+    .profile-achievements {
+        width: 100%;
+        padding: 2rem 1rem;
+        border-radius: 12px;
+        border-width: 1px;
+    }
+
+    .profile-achievements h2 {
+        font-size: 1.1rem;
+    }
+
+    .achievement {
+        font-size: 0.7rem;
+        padding: 5px 12px;
+    }
+
+
+    /* Details modal */
+
+    .card-details-container {
+        padding: 0.75rem;
+    }
+
+    .card-details-card {
+        max-height: calc(100vh - 1.5rem);
+        padding: 1.5rem;
+        border-top-right-radius: 20px;
+    }
+
+    .card-details-top {
+        gap: 8px;
+    }
+
+    .card-profile-avatar {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        font-size: 0.85rem;
+        padding: 7px;
+    }
+
+    .card-top-container {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .card-profile-name {
+        font-size: 0.9rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .card-posted {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+    }
+
+    #card-details-number {
+        font-size: 0.9rem;
+        padding-right: 5px;
+        flex-shrink: 0;
+    }
+
+    #btn-card-details-close {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        font-size: 1.3rem;
+    }
+
+    .card-details-content {
+        padding-right: 3px;
+    }
+
+    #card-details-title {
+        font-size: 1.6rem;
+        line-height: 1.25;
+        margin: 0.8rem 0;
+    }
+
+    .card-details-headline {
+        font-size: 0.9rem;
+    }
+
+    .card-details-description {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+
+    /* Edit modal */
+
+    .idea-form-container {
+        padding: 0.75rem;
+        align-items: center;
+    }
+
+    .idea-form-card {
+        width: 100%;
+        max-width: 550px;
+        max-height: calc(100vh - 1.5rem);
+        overflow-y: auto;
+        padding: 1.25rem;
+        border-top-right-radius: 18px;
+        gap: 0.8rem;
+    }
+
+    .idea-form-card h3 {
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+    }
+
+    .idea-form-card h2 {
+        font-size: 1.6rem;
+    }
+
+    .idea-form-card p {
+        font-size: 0.8rem;
+        margin-top: -8px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .form-row .form-group {
+        width: 100%;
+        flex: none;
+    }
+
+    .form-segmented {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .segment-option {
+        font-size: 10px;
+        padding: 10px 3px;
+    }
+
+    .idea-form input[type="text"],
+    .idea-form textarea,
+    .idea-form select {
+        font-size: 14px;
+    }
+
+    .toggle-row {
+        gap: 15px;
+    }
+
+    .submit-idea-btn {
+        padding: 12px;
+        font-size: 11px;
+    }
+
+
+    /* Delete confirmation */
+
+    .delete-confirm-container {
+        padding: 0.75rem;
+    }
+
+    .delete-confirm-card {
+        width: 100%;
+        max-width: 420px;
+        padding: 1.5rem;
+        border-top-right-radius: 18px;
+    }
+
+    .delete-confirm-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .delete-confirm-card p {
+        font-size: 0.8rem;
+    }
+
+    .delete-confirm-actions {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .delete-confirm-actions button {
+        flex: 1 1 0;
+        width: auto;
+        min-width: 0;
+        padding: 10px 12px;
+    }
+}
+
+
+/* ---------- SMALL MOBILE ---------- */
+
+@media (max-width: 480px) {
+
+    .profile-container {
+        padding: 1rem 0.7rem 1.5rem;
+    }
+
+    .profile-card {
+        padding: 1.5rem 0.75rem;
+    }
+
+    .profile-avatar {
+        width: 58px;
+        height: 58px;
+    }
+
+    .profile-name {
+        font-size: 1.25rem;
+    }
+
+    /* Stats stay in one row */
+
+    .profile-stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 5px;
+    }
+
+    .profile-stats-row {
+        padding: 10px 3px;
+    }
+
+    .profile-stats-num {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+
+    .stats-title {
+        font-size: 0.58rem;
+    }
+
+
+    /* Make idea row slightly more compact */
+
+    .idea {
+        grid-template-columns:
+            27px
+            minmax(0, 1fr)
+            auto
+            24px;
+
+        padding: 9px 7px;
+        gap: 4px;
+    }
+
+    .idea-category {
+        width: 27px;
+        font-size: 1rem;
+    }
+
+    .idea-title {
+        font-size: 0.78rem;
+    }
+
+    .idea-posted {
+        font-size: 0.55rem;
+    }
+
+    .idea-difficulty {
+        font-size: 8px;
+        padding: 3px 5px;
+    }
+
+    .actions-wrapper,
+    .actions {
+        width: 24px;
+    }
+
+    .actions {
+        font-size: 0.7rem;
+    }
+
+    .actions-container {
+        width: 110px;
+    }
+
+
+    /* Details modal */
+
+    .card-details-card {
+        padding: 1.25rem;
+    }
+
+    .card-profile-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 0.75rem;
+    }
+
+    .card-profile-name {
+        font-size: 0.8rem;
+    }
+
+    .card-posted {
+        font-size: 0.55rem;
+    }
+
+    #card-details-number {
+        display: none;
+    }
+
+    #card-details-title {
+        font-size: 1.35rem;
+    }
+
+    .card-details-description {
+        font-size: 0.8rem;
+    }
+
+
+    /* Edit modal */
+
+    .idea-form-card {
+        padding: 1rem;
+    }
+
+    .idea-form-card h2 {
+        font-size: 1.4rem;
+    }
+
+    .idea-form-card p {
+        font-size: 0.75rem;
+    }
+
+    .segment-option {
+        font-size: 9px;
+    }
+
+
+    /* Delete confirmation */
+
+    .delete-confirm-card {
+        padding: 1.25rem;
+    }
+
+    .delete-confirm-card h2 {
+        font-size: 1.35rem;
+    }
+
+    .delete-confirm-actions {
+        flex-direction: row;
+        gap: 6px;
+    }
+
+    .delete-confirm-actions button {
+        flex: 1 1 0;
+        width: 50%;
+        min-width: 0;
+        padding: 10px 8px;
+        font-size: 0.7rem;
+    }
+}
+
+
+/* ---------- VERY SMALL PHONES ---------- */
+
+@media (max-width: 360px) {
+
+    .profile-container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .profile-card {
+        padding: 1.25rem 0.5rem;
+    }
+
+    .profile-name {
+        font-size: 1.15rem;
+    }
+
+    .stats-title {
+        font-size: 0.52rem;
+    }
+
+    .idea {
+        grid-template-columns:
+            24px
+            minmax(0, 1fr)
+            auto
+            22px;
+
+        padding: 8px 5px;
+    }
+
+    .idea-category {
+        width: 24px;
+        font-size: 0.9rem;
+    }
+
+    .idea-title {
+        font-size: 0.72rem;
+    }
+
+    .idea-difficulty {
+        font-size: 7px;
+        padding: 2px 4px;
+    }
+
+    .actions-wrapper,
+    .actions {
+        width: 22px;
+    }
+
+    .actions {
+        font-size: 0.65rem;
+    }
+
+    .actions-container {
+        width: 105px;
+        right: 0;
+    }
+
+    .card-details-card,
+    .idea-form-card,
+    .delete-confirm-card {
+        padding: 0.9rem;
+    }
 }
